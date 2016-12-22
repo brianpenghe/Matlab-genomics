@@ -1,7 +1,8 @@
 function [name,value,head] = ImportBody(filename,headername,stringNo,floatNo,RowLabelCol)
 %ImportBody is a function to import a table of RowLabels with values and a matching file of headers 
 %The input files shouldn't contain trailing linebreaks
-%input [filename] should start with name columns and then value columns
+%input should start with name columns and then value columns
+%function [name,value,head] = ImportBody(filename,headername,stringNo,floatNo,RowLabelCol)
 
 %Filename:
 %Henry    506    238
