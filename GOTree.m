@@ -1,8 +1,7 @@
 function Tree = GOTree(ID,GO)
 %GOTree is a function to plot a tree of given GO term ID's 
 %The input should be a [] vector containing integers
-
-%function Tree = GOTree(ID)
+%function Tree = GOTree(ID,GO)
 %make sure you run this first:  GO = geneont('live',true);
 %ID = [35116	35115	35136	35137	30326	35113	35107	35108	7275]
 
