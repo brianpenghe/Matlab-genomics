@@ -12,6 +12,9 @@ function [name,value,head] = ImportBody(filename,headername,stringNo,floatNo,Row
 
 %Headername:
 %CP    HP
+if nargin == 5
+Delimiter = 't';
+end;
 file1=fopen(headername);
 Spec1=repmat('%s ',1,floatNo);
 if Delimiter=='t'
