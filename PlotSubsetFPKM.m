@@ -10,10 +10,10 @@ end;
 
 A=readtable('test.dat','ReadVariableNames',false);
 B=table2cell(A);
-[C,ia,ib]=intersect(Gname,B);
+
 if type == 'c'
-clustergram(log2(FPKM(ia,:)+0.1),'DisplayRange',12,'Cluster',1,'RowLabels',Gname(ia),'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false')
+clustergram(log2(FPKM(ismember(Gname,B),:)+0.1),'DisplayRange',12,'Cluster',1,'RowLabels',Gname(ismember(Gname,B)),'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false')
 else if type == 'h'
-HeatMap(log2(FPKM(ia,:)+0.1),'DisplayRange',12,'RowLabels',Gname(ia),'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false')
+HeatMap(log2(FPKM(ismember(Gname,B),:)+0.1),'DisplayRange',12,'RowLabels',Gname(ismember(Gname,B)),'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false')
 end
 end
