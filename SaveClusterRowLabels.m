@@ -6,5 +6,5 @@ function SaveClusterRowLabels = SaveClusterRowLabels(Cluster)
 
 s=inputname(1);
 RowLabels=flipud(get(Cluster,'RowLabels'));
-writetable(cell2table(RowLabels),s,'WriteVariableNames',false)
+SaveCell(RowLabels,s);
 end
