@@ -15,6 +15,7 @@ ColorNorm=floor(sqrt((ColorCode-min(ColorCode))./(max(ColorCode)-min(ColorCode)+
 testgo=GO(table2array(A(:,3)));
 cm=getmatrix(testgo);
 Tree=biograph(cm,get(testgo.Terms,'name'));
+
 for i=1:m
 set(Tree.Nodes(i),'Color',JET(ColorNorm(i),:))
 end
