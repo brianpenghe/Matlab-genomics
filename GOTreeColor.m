@@ -7,7 +7,7 @@ function Tree = GOTree(filename,GO)
 %make sure you replace all the GO:XXXX with XXXX
 %Copy paste the original p-value and GO ID columns onto a new file
 
-A=readtable(filename,'ReadVariableNames',false);
+A=readtable(filename,'ReadVariableNames',false,'Delimiter','\t');
 
 JET=colormap(jet);
 ColorCode=-log10(table2array(A(:,1)));
