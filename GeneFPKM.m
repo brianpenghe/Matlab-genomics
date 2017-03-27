@@ -1,4 +1,4 @@
-function GeneFPKM = GeneFPKM(FPKM,head)
+function GeneFPKM = GeneFPKM(FPKM)
 %GeneFPKM is a function to plot the stacked bars of gene counts at different abundance levels 
 %Useful for investigating the qualities of RNA-seq libraries
 %GeneFPKM = GeneFPKM(FPKM,head)
