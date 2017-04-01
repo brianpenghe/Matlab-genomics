@@ -206,7 +206,8 @@ ZLims = [nanmin(Z(:)),nanmax(Z(:))];
 % Basic plot:
 
 figure('Tag','corrPlotFigure')
-[H,Ax,bigAx] = gplotmatrix(X,[],[],[],'.',2,[],'hist',varNames,varNames);
+[H,Ax,bigAx] = gplotmatrix_corrheat(X,[],[],[],'.',2,[],'hist',varNames,varNames,R);
+
 
 % Format plot:
 
