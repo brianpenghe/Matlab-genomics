@@ -1,5 +1,6 @@
 function [h,ax,BigAx] = gplotmatrix(x,y,g,clr,sym,siz,doleg,dispopt,xnam,ynam,Colorcode)
-%GPLOTMATRIX  Scatter plot matrix with grouping variable.
+%GPLOTMATRIX_CORRHEAT  This version is dedicated for corrplot.m
+
 %   GPLOTMATRIX(X,Y,G) creates a matrix of scatter plots of the columns of
 %   X against the columns of Y, grouped by G.  If X is P-by-M and Y is
 %   P-by-N, GPLOTMATRIX will produce a N-by-M matrix of axes.  If you omit
@@ -231,7 +232,9 @@ for i=rows:-1:1,
                   'XTickLabel','', 'YTickLabel','');
               axis tight;
               xlim(i,j,:) = get(gca,'xlim');
-              set(histax, 'ylim', get(histax,'ylim').*[1 1.05]);              
+              set(histax, 'ylim', get(histax,'ylim').*[1 1.05]); 
+              
+              
           end
       else
          hhij = iscatter(reshape(x(:,j,:),[m k]), ...
@@ -243,10 +246,7 @@ for i=rows:-1:1,
          xlim(i,j,:) = get(gca,'xlim');
 
          % Store information for gname
-         set(gca, 'UserData', {'gscatter' x(:,j,:) y(:,i,:) g});
-         JET=colormap(jet);
 
-         set(gca, 'Color',JET(floor((Colorcode(i,j)+1)/2.0001*64+1),:)); 
          % Attach data cursor
          for q=1:ng
              hgaddbehavior(hh(i,j,q),dataCursorBehaviorObj);
@@ -255,6 +255,9 @@ for i=rows:-1:1,
       end
       set(ax(i,j),'xlimmode','auto', 'ylimmode','auto', ...
                   'xgrid','off', 'ygrid','off')
+      set(gca, 'UserData', {'gscatter' x(:,j,:) y(:,i,:) g});
+      JET=colormap(jet);
+      set(gca, 'Color',JET(floor((Colorcode(i,j)+1)/2.0001*64+1),:)); 
    end
 end
 
