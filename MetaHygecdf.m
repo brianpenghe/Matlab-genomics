@@ -32,7 +32,21 @@ for i=1:An
         Tail(i, j)=hygecdf(I(i,j),M,AA(i),BB(j),'upper');
     end
 end
-HeatMap(P,'Symmetric',false,'Colormap',colormap(jet))
-HeatMap(Tail,'Symmetric',false,'Colormap',colormap(jet))
+
+HeatMap(flipud(P),'Symmetric',false,'Colormap',colormap(jet),'RowLabels',fliplr(A.Properties.VariableNames),'ColumnLabels',B.Properties.VariableNames)
+
+figure
+colormap(pink)
+imagesc(max(-log10(Tail*An*Bn),0))
+% add count labels
+
+for i = 1:An
+    for j = 1:Bn
+    textHandles(j,i) = text(j,i,num2str(I(i,j)),...
+                        'horizontalAlignment','center');
+    end
+end
+set(gca,'XTick',[1:Bn],'XTickLabel',strrep(B.Properties.VariableNames,'_','\_'),'XTickLabelRotation',90)
+set(gca,'YTick',[1:An],'YTickLabel',strrep(A.Properties.VariableNames,'_','\_'))
 
 end
