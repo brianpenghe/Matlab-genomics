@@ -7,9 +7,9 @@ function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d)
 %This function depends on other functions in the same folder
 %function [COEFF,SCORE,Latent] = PCAPlot(Matrix,Head,d);
 %This function depends on discretize.m which only works on Matlab R2016b or later
+%please run figure; first
 
 [COEFF,SCORE,latent] = princomp(Matrix);
-figure;
 colormap(jet)
 scatter3(SCORE(:,1),SCORE(:,2),SCORE(:,3),50,d,'filled');
 ylabel(strcat('PC2(',strcat(num2str(round(latent(2)/sum(latent)*100)),'%'),')'))
