@@ -16,6 +16,7 @@ function [P Tail]= MetaHygecdf(A,B,M)
 %M is a constant representing total population size
 %The x, M, k, N are explained in Matlab readme of hypecdf.m
 
+%Sometimes your heatmap may have 0 count sitting at red boxes. This may be caused by the fact that one of the input lists is too small. Remember Matlab defines cdf(X=0)=pmf(X=0) instead of 0.
 [AA BB I] = MetaIntersect(A,B); 
 P=I;    %initialize matrix
 Tail=I;
@@ -33,7 +34,19 @@ for i=1:An
     end
 end
 
-HeatMap(flipud(P),'Symmetric',false,'Colormap',colormap(jet),'RowLabels',fliplr(A.Properties.VariableNames),'ColumnLabels',B.Properties.VariableNames)
+figure
+colormap(jet)
+imagesc(P);
+
+for i = 1:An
+    for j = 1:Bn
+    textHandles(j,i) = text(j,i,num2str(I(i,j)),...
+                        'horizontalAlignment','center');
+    end
+end
+set(gca,'XTick',[1:Bn],'XTickLabel',strrep(B.Properties.VariableNames,'_','\_'),'XTickLabelRotation',90)
+set(gca,'YTick',[1:An],'YTickLabel',strrep(A.Properties.VariableNames,'_','\_'))
+
 
 figure
 colormap(pink)
