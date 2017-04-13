@@ -2,7 +2,7 @@ function Order = GetOrder(NewArr,OldArr)
 %GetOrder gets the order array that transforms the old array to the new one
 %Useful for plotting data onto the original matrix layout. Say, plot additional data of a defined gene set
 %In matlab, an array is transformed in this way:
-%OldArr([3 2 4 1])=NewArr;
+%OldArr([3 2 4 1]')=NewArr;
 % A'     1     0 0 0 1   C
 % B   '  1  .  0 1 0 0 =   B 
 % C      1     1 0 0 0       D
@@ -21,6 +21,9 @@ if m==1
 end;
 for i=1:m
 test=strmatch(NewArr(i),OldArr,'exact');
-Order(i,1)=test(1,1);
+if isempty(test)
+    Order(i,1)=0;
+else
+    Order(i,1)=test(1,1);
 end
 end
