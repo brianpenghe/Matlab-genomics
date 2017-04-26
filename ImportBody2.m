@@ -4,7 +4,7 @@ function [name,value,head] = ImportBody2(filename,stringNo,Delimiter)
 %If no Delimiter specified, we assume it is a csv.
 %function [name,value,head] = ImportBody(filename,Delimiter,stringNo)
 %Delimiter can be c(comma) or t(tab)
-%Make sure you specify how many columns of strings it contains to the left
+%Make sure you specify which column contains gene name using stringNo
 
 %File example:
 %Name     ID    HP
@@ -27,7 +27,7 @@ end;
 
 DataColumns=varfun(@isnumeric,Table(1,:),'output','uniform');
 head=Table.Properties.VariableNames(DataColumns);
-name=table2cell(Table(2:end,stringNo));
-value=table2array(Table(2:end,DataColumns));
+name=table2cell(Table(:,stringNo));
+value=table2array(Table(:,DataColumns));
 
 end;
