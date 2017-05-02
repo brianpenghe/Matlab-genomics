@@ -1,4 +1,4 @@
-function donout = donut(numdat,varargin)
+function donut = donut(numdat,varargin)
 % numdat: number data. Each column is a catagory, each row represents
 %   a separate set of data
 % varargin{1}: cell of legend entries, one string for each column of numdat,
@@ -15,7 +15,7 @@ legtext = [];
 colormap lines
 clrmp = colormap;
 ispie = 0;
-
+width = 0.95;
 if length(varargin)>0
     legtext = varargin{1};
     if length(varargin)>1
@@ -26,7 +26,11 @@ if length(varargin)>0
             clrmp = colormap;
         end
         if length(varargin)>2
-            if isempty(find(strcmp(varargin,'pie')))==0; ispie = 1; end
+            if isempty(find(strcmp(varargin,'pie')))==0; 
+                ispie = 1;
+            else
+                width=varargin{3};
+            end
         end
     end
 end
@@ -42,10 +46,10 @@ for i = 1:rings
     for j = 1:cats
         if ispie==1
             r0 = 0;
-            r1 = 0.95;
+            r1 = width;
         else
             r0 = i;
-            r1 = i+0.95;
+            r1 = i+width;
         end
         a0 = fractang(j);
         a1 = fractang(j+1);
