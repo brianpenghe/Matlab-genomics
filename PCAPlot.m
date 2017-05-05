@@ -1,4 +1,5 @@
 function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N)
+%Please remember to transpose if you want do reduce rows!!!!!!!
 %PCAPlot is a function to calculate PCs and plot out an image and .avi video
 %The Matrix is to be transposed if you do Sample PCA for a gene table
 %filtering and log transformation may have to be performed before using this function
@@ -44,5 +45,9 @@ ylabel(strcat('PC2(',strcat(num2str(round(latent(2)/sum(latent)*100)),'%'),')'))
 zlabel(strcat('PC3(',strcat(num2str(round(latent(3)/sum(latent)*100)),'%'),')'))
 xlabel(strcat('PC1(',strcat(num2str(round(latent(1)/sum(latent)*100)),'%'),')'))
 text(COEFF(PlotSet,1),COEFF(PlotSet,2),COEFF(PlotSet,3),GeneName(PlotSet))
+              
+HeatMap(transpose(SCORE(:,20:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[20:-1:1],'ColumnLabels',Head)
+
+
 end
 
