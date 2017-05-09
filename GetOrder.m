@@ -16,8 +16,10 @@ function Order = GetOrder(NewArr,OldArr)
 
 Order=[];
 [m n]=size(NewArr);
-if m==1
-    disp('Sorry please transpose your array')
+if m==1 && n>1
+    disp('We transposed your array')
+    NewArr0=NewArr';
+    NewArr=NewArr0;
 end;
 for i=1:m
 test=strmatch(NewArr(i),OldArr,'exact');
