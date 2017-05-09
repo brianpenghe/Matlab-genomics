@@ -3,7 +3,13 @@ function NewCell = ValidizeNames(OldCell)
 %Useful for creating tables
 %better than genvarname
 %NewCell=ValidizeNames(OldCell)
-SaveCell(OldCell,'temp');
+[m n]=size(OldCell);
+if m > 1 && n==1
+    SaveCell(OldCell','temp')
+    disp('We transposed your array')
+else
+    SaveCell(OldCell,'temp');
+end
 NewCell0=readtable('temp.txt');
 NewCell=NewCell0.Properties.VariableNames;
 
