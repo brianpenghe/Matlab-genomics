@@ -20,8 +20,6 @@ function NewTable = OneDim2TwoDim(OldTable)
 
 RowName=unique(table2array(OldTable(:,1)));
 ColumnName=unique(table2array(OldTable(:,2)));
-ValidizeNames(RowName);
-ValidizeNames(ColumnName);
 [m1 n1]=size(RowName);
 [m2 n2]=size(ColumnName);
 [m0 n0]=size(OldTable);
