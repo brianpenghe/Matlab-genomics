@@ -12,5 +12,12 @@ Name2=CMatrix.Properties.VariableNames';
 CMatrix2=repmat([0],m1+m2);
 CMatrix2(1:m1,end-m2+1:end)=table2array(CMatrix);
 biog=biograph(CMatrix2,[Name1;Name2]','LayoutType','radial');
+for i=1:m1
+    set(biog.Nodes(i),'Color',[1,0.5,0.5])
+end
+for i=m1+1:m1+m2
+    set(biog.Nodes(i),'Color',[0.7,0.7,1])
+    set(biog.Nodes(i),'Shape','Circle')
+end
 view(biog)
 end
