@@ -1,5 +1,9 @@
 function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N)
-%Please remember to transpose if you want do reduce rows!!!!!!!
+%The input matrix is a gene X sample matrix
+%             Sample1 Sample2 Sample3
+%      gene1
+%      gene2
+%      gene3
 %PCAPlot is a function to calculate PCs and plot out an image and .avi video
 %The Matrix is to be transposed if you do Sample PCA for a gene table
 %filtering and log transformation may have to be performed before using this function
@@ -16,7 +20,7 @@ if nargin < 4
     error('Not enough input arguments.')
 end
 
-[COEFF,SCORE,latent] = princomp(Matrix);
+[COEFF,SCORE,latent] = princomp(Matrix');
 colormap(jet)
 scatter3(SCORE(:,1),SCORE(:,2),SCORE(:,3),50,d,'filled');
 ylabel(strcat('PC2(',strcat(num2str(round(latent(2)/sum(latent)*100)),'%'),')'))
