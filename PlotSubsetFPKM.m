@@ -10,7 +10,7 @@ if nargin == 3
 type = 'c';
 end;
 if nargin == 4
-PDist = 'Euclidiean';
+PDist = 'euclidiean';
 end;
 
 A=readtable('test.dat','ReadVariableNames',false);
