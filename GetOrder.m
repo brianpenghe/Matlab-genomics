@@ -17,12 +17,21 @@ function Order = GetOrder(NewArr,OldArr)
 Order=[];
 [m n]=size(NewArr);
 if m==1 && n>1
-    disp('We transposed your array')
+    disp('We transposed your new array')
     NewArr0=NewArr';
-    NewArr=NewArr0;
+    m=n;
+else NewArr0=NewArr;
 end;
+        
+[m1 n1]=size(OldArr);
+if m1==1 && n1>1
+    disp('We transposed your old array')
+    OldArr0=OldArr';
+else OldArr0=OldArr;
+end;        
+
 for i=1:m
-test=strmatch(NewArr(i),OldArr,'exact');
+test=strmatch(NewArr0(i),OldArr0,'exact');
 if isempty(test)
     Order(i,1)=0;
 else
