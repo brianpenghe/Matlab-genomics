@@ -27,7 +27,12 @@ figure;
 colormap(jet)
 if DimNo == 2
     scatter(mappedX(:,1),mappedX(:,2),sc,d,'filled');
+    xlabel('tsne1')
+    ylabel('tsne2')
 elseif DimNo == 3
     scatter3(mappedX(:,1),mappedX(:,2),mappedX(:,3),sc,d,'filled');
+    xlabel('tsne1')
+    ylabel('tsne2')
+    zlabel('tsne3')
 end
 
