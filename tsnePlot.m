@@ -1,4 +1,4 @@
-function mappedX = tsnePlot(Matrix,d,sc,DimNo)
+function mappedX = tsnePlot(Matrix,d,sc,DimNo,Head)
 %The input matrix is a gene X sample matrix
 %             Sample1 Sample2 Sample3
 %      gene1
@@ -29,10 +29,17 @@ if DimNo == 2
     scatter(mappedX(:,1),mappedX(:,2),sc,d,'filled');
     xlabel('tsne1')
     ylabel('tsne2')
+    if nargin == 5
+        text(mappedX(:,1)+0.01,mappedX(:,2)+0.01,Head)
+    end;
 elseif DimNo == 3
     scatter3(mappedX(:,1),mappedX(:,2),mappedX(:,3),sc,d,'filled');
     xlabel('tsne1')
     ylabel('tsne2')
     zlabel('tsne3')
+    if nargin == 5
+        text(mappedX(:,1)+0.01,mappedX(:,2)+0.01,mappedX(:,3)+0.01,Head)
+    end;
+end;
 end
 
