@@ -33,7 +33,7 @@ end;
 CMatrix3=CMatrix2;
 CMatrix3(CMatrix3>0)=1;
 
-biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial');
+biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial','Scale',1,'LayoutScale',2);
 for i=1:m1
     set(biog.Nodes(i),'Color',[1,0.7,0.7])
 end
