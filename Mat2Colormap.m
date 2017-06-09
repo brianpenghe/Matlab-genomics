@@ -14,7 +14,7 @@ end;
 
 [m n]=size(Matrix);
 test2=discretize(Matrix,64);
-    if Mode=='Symmetric'
+    if strcmp(Mode,'Symmetric')==1
         if (max(max(Matrix)')-min(min(Matrix)')) >= 0
             test2=discretize([Matrix;repmat(-max(max(Matrix)'),1,n)],64);
         elseif (max(max(Matrix)')-min(min(Matrix)')) < 0
