@@ -12,7 +12,7 @@ function biog = PlotBipar(Filename,Cap,TransformMethod,Watershed)
 %                          *#*%^--
 %                          #^%!#--
 %
-%TransformMethod is optional. It can be 'l'(og) or 's'(qrt) 
+%TransformMethod is optional. It can be 'l'(og) or 's'(qrt) or 'n'(one)
 %Censor ultrahigh values to Cap
 %Turn small values lower than Watershed to zero
 %If nargin==1, weighting is ignored
@@ -59,7 +59,7 @@ if nargin>1
 
     Weights(Weights>Cap)=Cap;
               
-    Weights=Mat2Colormap(Weights);
+    Weights=Mat2Colormap(Weights,'cool');
     [m n] = size(Weights);
     for i=1:m
         temp=biog.Edges(i);
