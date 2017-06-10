@@ -1,4 +1,4 @@
-function biog = PlotBipar(Filename,Cap,TransformMethod,Watershed)
+function biog = PlotBipar(Filename,Cap,TransformMethod,Watershed,GraphSize)
 %PlotBipar plots a bipartite graph based on the matrix stored in the file Filename
 %The matrix in the Filaname is a logical matrix where Cij~=0 indicates i -> j. Cij is the weight of the edge
 %RowNames and VariableNames have to be included in the Filename
@@ -26,6 +26,9 @@ Name2=CMatrix.Properties.VariableNames';
 CMatrix2=repmat([0],m1+m2);
 CMatrix2(1:m1,end-m2+1:end)=table2array(CMatrix);
 
+if nargin<5
+    GraphSize=3;
+end;
 if nargin>3
 CMatrix2(CMatrix2<Watershed)=0;
 end;
@@ -33,7 +36,7 @@ end;
 CMatrix3=CMatrix2;
 CMatrix3(CMatrix3>0)=1;
 
-biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial','Scale',1,'LayoutScale',2,'NodeAutoSize','off');
+biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial','Scale',1,'LayoutScale',GraphSize,'NodeAutoSize','off');
 for i=1:m1
     set(biog.Nodes(i),'Color',[1,0.7,0.7])
 end
