@@ -38,5 +38,8 @@ end;
 ColorMatrix=test3R;
 ColorMatrix(:,:,2)=test3G;
 ColorMatrix(:,:,3)=test3B;
+if m==1 || n==1
+    ColorMatrix=reshape(ColorMatrix,max(m,n),3);
+end;
 end
 
