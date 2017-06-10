@@ -33,7 +33,7 @@ end;
 CMatrix3=CMatrix2;
 CMatrix3(CMatrix3>0)=1;
 
-biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial','Scale',1,'LayoutScale',2);
+biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial','Scale',1,'LayoutScale',2,'NodeAutoSize','off');
 for i=1:m1
     set(biog.Nodes(i),'Color',[1,0.7,0.7])
 end
@@ -59,10 +59,12 @@ if nargin>1
 
     Weights(Weights>Cap)=Cap;
               
-    Weights=Weights./max(Weights)*2;
+    Weights=Mat2Colormap(Weights);
     [m n] = size(Weights);
     for i=1:m
-        biog.Edges(i).LineWidth=Weights(i);
+        temp=biog.Edges(i);
+        temp.LineColor=Weights(i,:);
+        biog.Edges(i)=temp;
     end;
 end;              
 view(biog)
