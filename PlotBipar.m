@@ -36,6 +36,10 @@ end;
 CMatrix3=CMatrix2;
 CMatrix3(CMatrix3>0)=1;
 
+CMatrix4=array2table(CMatrix3);
+CMatrix4.Properties.RowNames=ValidizeNames([Name1;Name2]);
+CMatrix4.Properties.VariableNames=ValidizeNames([Name1;Name2]);
+writetable(CMatrix4,'OutputMatrixFromPlotBipar.csv','WriteVariableNames',1,'WriteRowNames',1,'Delimiter',';');
 biog=biograph(CMatrix3,[Name1;Name2]','LayoutType','radial','Scale',1,'LayoutScale',GraphSize,'NodeAutoSize','off');
 for i=1:m1
     set(biog.Nodes(i),'Color',[1,0.7,0.7])
