@@ -5,6 +5,6 @@ function SaveClusterColumnLabels = SaveClusterColumnLabels(Cluster)
 %SaveClusterColumnLabels(Cluster)
 
 s=inputname(1);
-ColumnLabels=flipud(get(Cluster,'ColumnLabels'));
+ColumnLabels=flipud(get(Cluster,'ColumnLabels'))';
 SaveCell(ColumnLabels,s);
 end
