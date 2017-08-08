@@ -23,7 +23,7 @@ OrderIndex=GetOrder(flipud(B),Gname);
 MyMat = FPKM(OrderIndex(OrderIndex>0),:);
 MyLabels = Gname(OrderIndex(OrderIndex>0));
 if type == 'c'
-MyClg = clustergram(log2(MyMat+0.1),'DisplayRange',12,'Cluster',1,'RowLabels',MyLabels,'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
+MyClg = clustergram(log2(MyMat+0.1),'DisplayRange',12,'Cluster',1,'RowLabels',MyLabels,'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)    %use average linkage which works better for Pearson
 elseif type == 'd'
 MyClg = clustergram(log2(MyMat+0.1),'DisplayRatio',[0.1 0.1],'DisplayRange',12,'RowLabels',MyLabels,'RowPDist','correlation','ColumnPDist',PDist,'ColumnLabels',head,'Linkage','complete','Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 elseif type == 'h'
