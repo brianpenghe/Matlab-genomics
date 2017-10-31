@@ -52,6 +52,8 @@ text(COEFF(PlotSet,1),COEFF(PlotSet,2),COEFF(PlotSet,3),GeneName(PlotSet))
               
 HeatMap(transpose(SCORE(:,20:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[20:-1:1],'ColumnLabels',Head)
 
-
+figure;
+donut([latent(1:20)' sum(latent(21:end)')],[strread(num2str([1:20]),'%s');{'Rest'}]',[],'pie')              
+              
 end
 
