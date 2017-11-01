@@ -44,6 +44,8 @@ end
 
 figure;
 gplotmatrix_corrheat(USCORE,VSCORE,[],[],'.',2,[],'hist',Mat2StrArray(1:An),Mat2StrArray(1:Bn),corr(USCORE,VSCORE))
+clustergram(ACOEFF,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:An),'RowLabels',GeneName)
+clustergram(BCOEFF,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:Bn),'RowLabels',MetaName)
 
 end
 
