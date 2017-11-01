@@ -17,7 +17,7 @@ function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, He
 %This function depends on other functions in the same folder
 %function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, Head,GeneName,MetaName,d,N)
 %This function depends on discretize.m which only works on Matlab R2016b or later
-figure;
+
 if nargin < 7
     N=100
 end
@@ -43,9 +43,28 @@ for i=1:iend
 end
 
 figure;
+colormap(jet)
+scatter3(USCORE(:,1),USCORE(:,2),USCORE(:,3),50,d,'filled');
+ylabel(strcat('CC2(',strcat(num2str(rCORR(2))),')'))
+zlabel(strcat('CC3(',strcat(num2str(rCORR(3))),')'))
+xlabel(strcat('CC1(',strcat(num2str(rCORR(1))),')'))
+text(USCORE(:,1),USCORE(:,2),USCORE(:,3),Head);
+title('U scores');
+
+figure;
+colormap(jet)
+scatter3(VSCORE(:,1),VSCORE(:,2),VSCORE(:,3),50,d,'filled');
+ylabel(strcat('CC2(',strcat(num2str(rCORR(2))),')'))
+zlabel(strcat('CC3(',strcat(num2str(rCORR(3))),')'))
+xlabel(strcat('CC1(',strcat(num2str(rCORR(1))),')'))
+text(VSCORE(:,1),VSCORE(:,2),VSCORE(:,3),Head);
+title('V scores');
+
+figure;
 gplotmatrix_corrheat(USCORE,VSCORE,[],[],'.',2,[],'hist',Mat2StrArray(1:An),Mat2StrArray(1:Bn),corr(USCORE,VSCORE))
 clustergram(ACOEFF,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:An),'RowLabels',GeneName)
 clustergram(BCOEFF,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:Bn),'RowLabels',MetaName)
-
+HeatMap(transpose(USCORE(:,An:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[An:-1:1],'ColumnLabels',Head)
+HeatMap(transpose(VSCORE(:,Bn:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[Bn:-1:1],'ColumnLabels',Head)
 end
 
