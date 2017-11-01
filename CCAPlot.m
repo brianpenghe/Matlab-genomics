@@ -42,7 +42,8 @@ for i=1:iend
     SaveCell(flipud([MetaName(BIndex(testB>0,i)) Mat2StrArray(testB(testB>0))]),strcat(num2str(i),'_meta_pos.txt'));
 end
 
-
+figure;
+plotmatrix(USCORE,VSCORE);
 
 end
 
