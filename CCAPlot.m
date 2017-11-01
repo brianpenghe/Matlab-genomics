@@ -43,7 +43,7 @@ for i=1:iend
 end
 
 figure;
-plotmatrix(USCORE,VSCORE);
+gplotmatrix_corrheat(USCORE,VSCORE,[],[],'.',2,[],'hist',Mat2StrArray(1:An),Mat2StrArray(1:Bn),corr(USCORE,VSCORE))
 
 end
 
