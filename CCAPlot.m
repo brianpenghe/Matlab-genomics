@@ -62,11 +62,17 @@ title('V scores');
 
 figure;
 gplotmatrix_corrheat(USCORE,VSCORE,[],[],'.',2,[],'hist',Mat2StrArray(1:An),Mat2StrArray(1:Bn),corr(USCORE,VSCORE))
-clustergram(ACOEFF,'Standardize',1,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:An),'RowLabels',GeneName)
-clustergram(BCOEFF,'Standardize',1,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:Bn),'RowLabels',MetaName)
-HeatMap(ACOEFF,'Standardize',1,'Colormap',colormap(jet),'DisplayRange',2.5,'ColumnLabels',Mat2StrArray(1:An),'RowLabels',GeneName)
-HeatMap(BCOEFF,'Standardize',1,'Colormap',colormap(jet),'DisplayRange',2.5,'ColumnLabels',Mat2StrArray(1:Bn),'RowLabels',MetaName)
-HeatMap(transpose(USCORE(:,An:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[An:-1:1],'ColumnLabels',Head)
-HeatMap(transpose(VSCORE(:,Bn:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[Bn:-1:1],'ColumnLabels',Head)
+Acof=clustergram(ACOEFF,'Standardize',1,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:An),'RowLabels',GeneName)
+addTitle(Acof,'X vs. U')
+Bcof=clustergram(BCOEFF,'Standardize',1,'Colormap',colormap(jet),'Cluster',1,'ColumnLabels',Mat2StrArray(1:Bn),'RowLabels',MetaName)
+addTitle(Bcof,'Y vs. V')
+AcofHM=HeatMap(ACOEFF,'Standardize',1,'Colormap',colormap(jet),'DisplayRange',2.5,'ColumnLabels',Mat2StrArray(1:An),'RowLabels',GeneName)
+addTitle(AcofHM,'X vs. U')
+BcofHM=HeatMap(BCOEFF,'Standardize',1,'Colormap',colormap(jet),'DisplayRange',2.5,'ColumnLabels',Mat2StrArray(1:Bn),'RowLabels',MetaName)
+addTitle(BcofHM,'Y vs. V')
+uscoreHM=HeatMap(transpose(USCORE(:,An:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[An:-1:1],'ColumnLabels',Head)
+addTitle(uscoreHM,'U scores')
+vscoreHM=HeatMap(transpose(VSCORE(:,Bn:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[Bn:-1:1],'ColumnLabels',Head)
+addTitle(vscoreHM,'V scores')
 end
 
