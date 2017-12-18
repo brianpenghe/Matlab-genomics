@@ -36,8 +36,8 @@ iend=min(20,min(An,Bn))
 for i=1:iend
     [testA,AIndex(:,i)]=sort(ACOEFF(:,i));
     [testB,BIndex(:,i)]=sort(BCOEFF(:,i));
-    SaveCell([GeneName(AIndex(testA<0,i)) Mat2StrArray(testA(testA<0))],strcat(num2str(i),'_gene_neg.txt'));
-    SaveCell(flipud([GeneName(AIndex(testA>0,i)) Mat2StrArray(testA(testA>0))]),strcat(num2str(i),'_gene_pos.txt'));
+    SaveCell([GeneName(AIndex(testA<0,i)) Mat2StrArray(testA(testA<0))],strcat(num2str(i),'_PC_neg.txt'));
+    SaveCell(flipud([GeneName(AIndex(testA>0,i)) Mat2StrArray(testA(testA>0))]),strcat(num2str(i),'_PC_pos.txt'));
     SaveCell([MetaName(BIndex(testB<0,i)) Mat2StrArray(testB(testB<0))],strcat(num2str(i),'_meta_neg.txt'));
     SaveCell(flipud([MetaName(BIndex(testB>0,i)) Mat2StrArray(testB(testB>0))]),strcat(num2str(i),'_meta_pos.txt'));
 end
