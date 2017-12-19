@@ -32,8 +32,8 @@ CaptureFigVid([-20,10;-110,10;-190,80;-290,10;-380,10],'testvid.avi',OptionZ)
 Index=COEFF; %This is just for getting the same dimentionality
 for i=1:20
     [test,Index(:,i)]=sort(COEFF(:,i));
-    SaveCell(GeneName(Index(1:N,i)),strcat(num2str(i),'_neg.txt'));
-    SaveCell(GeneName(Index(end:-1:end-N+1,i)),strcat(num2str(i),'_pos.txt'));
+    SaveCell([GeneName(Index(test<0,i)) Mat2StrArray(test(test<0))],strcat(num2str(i),'_neg.txt'));
+    SaveCell(flipud([GeneName(Index(test>0,i)) Mat2StrArray(test(test>0))]),strcat(num2str(i),'_pos.txt'));
 end
 
 PlotSet=reshape(Index([1:N end:-1:end-N+1],1:3),6*N,1);
