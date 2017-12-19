@@ -50,8 +50,8 @@ zlabel(strcat('PC3(',strcat(num2str(round(latent(3)/sum(latent)*100)),'%'),')'))
 xlabel(strcat('PC1(',strcat(num2str(round(latent(1)/sum(latent)*100)),'%'),')'))
 text(COEFF(PlotSet,1),COEFF(PlotSet,2),COEFF(PlotSet,3),GeneName(PlotSet))
               
-HeatMap(transpose(SCORE(:,20:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[20:-1:1],'ColumnLabels',Head)
-
+pcascore=HeatMap(transpose(SCORE(:,20:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[20:-1:1],'ColumnLabels',Head)
+addTitle(pcascore,'PC scores')
 figure;
 donut([latent(1:20)' sum(latent(21:end)')],[strread(num2str([1:20]),'%s');{'Rest'}]',[],'pie')              
               
