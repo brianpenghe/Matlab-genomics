@@ -15,5 +15,7 @@ end
 [temp index]=sort(sum(GeneFPKM));
 figure;bar(GeneFPKM(10:-1:1,index)','stack')
 colormap(flipud(colormap(jet)))
+colorbar('TickLabels',fliplr({'0','1','2','3','4','5','6','7','10','20','50','Inf'}),'Ticks',1:10);
 end
 
+           
