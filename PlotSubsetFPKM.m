@@ -1,4 +1,4 @@
-function [MyClg MyMat MyLabels] = PlotSubsetFPKM(FPKM,Gname,head,type,PDist,Standardize)
+function [MyClg MyMat MyLabels] = PlotSubsetFPKM(FPKM,Gname,head,type,PDist,Standardize,pseudocount)
 %PlotSubsetFPK is a function to plot the heatmap of FPKM values of a subset of genes 
 %Since this script is dedicated for FPKM visualization, we log transform it.Other scripts like PCA.. and tSNE.. ask you to do the transformation 
 %Useful for investigating the expression patterns of a short list of genes
@@ -16,21 +16,23 @@ end;
 if nargin < 6
 Standardize = 0;
 end;
-
+if nargin < 7
+pseudocount = 0.1;
+end;
 A=readtable('test.dat','ReadVariableNames',false);
 B=table2cell(A);
 OrderIndex=GetOrder(flipud(B),Gname);
 MyMat = FPKM(OrderIndex(OrderIndex>0),:);
 MyLabels = Gname(OrderIndex(OrderIndex>0));
 if type == 'c'
-MyClg = clustergram(log2(MyMat+0.1),'DisplayRange',12,'Cluster',1,'RowLabels',MyLabels,'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)    %use average linkage which works better for Pearson
+MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRange',12,'Cluster',1,'RowLabels',MyLabels,'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)    %use average linkage which works better for Pearson
 elseif type == 'd'
-MyClg = clustergram(log2(MyMat+0.1),'DisplayRatio',[0.1 0.1],'DisplayRange',12,'RowLabels',MyLabels,'RowPDist','correlation','ColumnPDist',PDist,'ColumnLabels',head,'Linkage','complete','Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
+MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRatio',[0.1 0.1],'DisplayRange',12,'RowLabels',MyLabels,'RowPDist','correlation','ColumnPDist',PDist,'ColumnLabels',head,'Linkage','complete','Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 elseif type == 'h'
-MyClg = HeatMap(log2(MyMat+0.1),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
+MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 elseif type == 'o'
-MyClg = HeatMap(log2(MyMat+0.1),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
+MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 elseif type == 'oc'
-MyClg = clustergram(log2(MyMat+0.1),'OptimalLeafOrder','true','Cluster',2,'Linkage','complete','DisplayRatio',[0.1 0.1],'DisplayRange',12,'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
+MyClg = clustergram(log2(MyMat+pseudocount),'OptimalLeafOrder','true','Cluster',2,'Linkage','complete','DisplayRatio',[0.1 0.1],'DisplayRange',12,'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 end
 
