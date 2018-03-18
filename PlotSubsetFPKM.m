@@ -27,7 +27,7 @@ MyLabels = Gname(OrderIndex(OrderIndex>0));
 if type == 'c'
 MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRange',12,'Cluster',1,'RowLabels',MyLabels,'RowPDist','correlation','ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)    %use average linkage which works better for Pearson
 elseif type == 'd'
-MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRatio',[0.1 0.1],'DisplayRange',12,'RowLabels',MyLabels,'RowPDist','correlation','ColumnPDist',PDist,'ColumnLabels',head,'Linkage','complete','Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
+MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRatio',[0.1 0.1],'DisplayRange',7.5,'RowLabels',MyLabels,'RowPDist','correlation','ColumnPDist',PDist,'ColumnLabels',head,'Linkage','complete','Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 elseif type == 'h'
 MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric','false','Standardize',Standardize)
 elseif type == 'o'
