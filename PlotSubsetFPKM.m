@@ -1,5 +1,6 @@
 function [MyClg MyMat MyLabels] = PlotSubsetFPKM(FPKM,Gname,head,type,PDist,Standardize,pseudocount)
-%PlotSubsetFPK is a function to plot the heatmap of FPKM values of a subset of genes 
+%PlotSubsetFPKM is a function to plot the heatmap of FPKM values of a subset of genes 
+%function [MyClg MyMat MyLabels] = PlotSubsetFPKM(FPKM,Gname,head,type,PDist,Standardize,pseudocount)
 %Since this script is dedicated for FPKM visualization, we log transform it.Other scripts like PCA.. and tSNE.. ask you to do the transformation 
 %Useful for investigating the expression patterns of a short list of genes
 %PlotSubsetFPKM = PlotSubsetFPKM(FPKM,GeneName,head,type,PDist)
