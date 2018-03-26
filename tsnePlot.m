@@ -4,7 +4,6 @@ function mappedX = tsnePlot(Matrix,d,sc,DimNo,Head)
 %      gene1
 %      gene2
 %      gene3
-
 %tsnePlot is a function to reduce the dimension of columns
 %The Matrix is to be transposed if you do Sample tsne for a gene table
 %filtering and log transformation may have to be performed before using this function
@@ -12,7 +11,7 @@ function mappedX = tsnePlot(Matrix,d,sc,DimNo,Head)
 %array sc is optional for specifying sizes, default is all 50
 %array Head is needed for labeling Sample Names
 %This function depends on other functions in the same folder
-%function mappedX = tsnePlot(Matrix,Head,d,2);
+%function mappedX = tsnePlot(Matrix,d,sc,DimNo,Head);
 %DimNo is the number of dimensions you want. Default is 2 but you can set it to 3
 
 if nargin < 3
