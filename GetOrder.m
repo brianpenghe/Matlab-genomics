@@ -38,4 +38,8 @@ if isempty(test)
 else
     Order(i,1)=test(1,1);
 end
+DimTest=size(test);
+if DimTest(1)>1
+disp('Duplicates spotted!')
+end
 end
