@@ -21,7 +21,7 @@ if nargin < 7
 pseudocount = 0.1;
 end;
 Symmetric = false;
-DislayRange = 7.5;
+DisplayRange = 7.5;
 if Standardize == 2
 DisplayRange = 2.5;
 Symmetric = true;
@@ -38,10 +38,10 @@ MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRange',DisplayRange,'Cluster
 elseif type == 'd'
 MyClg = clustergram(log2(MyMat+pseudocount),'DisplayRatio',[0.1 0.1],'DisplayRange',DisplayRange,'RowLabels',MyLabels,'RowPDist','correlation','ColumnPDist',PDist,'ColumnLabels',head,'Linkage','complete','Colormap',colormap(jet),'Symmetric',Symmetric,'Standardize',Standardize)
 elseif type == 'h'
-MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric',Symmetric,'Standardize',Standardize)
+MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'DisplayRange',DisplayRange,'Symmetric',Symmetric,'Standardize',Standardize)
 elseif type == 'o'
-MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric',Symmetric,'Standardize',Standardize)
+MyClg = HeatMap(log2(MyMat+pseudocount),'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'DisplayRange',DisplayRange,'Symmetric',Symmetric,'Standardize',Standardize)
 elseif type == 'oc'
-MyClg = clustergram(log2(MyMat+pseudocount),'OptimalLeafOrder','true','Cluster',2,'Linkage','complete','DisplayRatio',[0.1 0.1],'DisplayRange',DisplayRange,'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'Symmetric',Symmetric,'Standardize',Standardize)
+MyClg = clustergram(log2(MyMat+pseudocount),'OptimalLeafOrder','true','Cluster',2,'Linkage','complete','DisplayRatio',[0.1 0.1],'DisplayRange',DisplayRange,'RowLabels',MyLabels,'ColumnLabels',head,'Colormap',colormap(jet),'DisplayRange',DisplayRange,'Symmetric',Symmetric,'Standardize',Standardize)
 end
 
