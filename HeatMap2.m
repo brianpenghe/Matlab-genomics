@@ -1,7 +1,9 @@
 function MyClustergram = HeatMap2(P,RowLabels,ColumnLabels,I)
 %HeatMap2 is a function to plot heatmaps, similar to HeatMap2 but it doesn't flip upside-down the matrix'
-%Value matrix I is Optional
+%Value matrix I is Optional, for labeling in situ
 %Data matrix P is required
+%MyClustergram = HeatMap2(P,RowLabels,ColumnLabels,I)
+
 figure;
 imagesc(P);
 
