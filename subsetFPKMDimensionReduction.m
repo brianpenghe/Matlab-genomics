@@ -5,13 +5,13 @@ function [MyClg MyMat MyLabels PCAOutput tSNEOutput] = subsetFPKMDimensionReduct
 %The gene list should be stored in a single column in test.dat in the current directory
 
 if nargin < 4
-type = 'c';
+    type = 'c';
 end;
 if nargin < 5
-PDist = 'euclidean';
+    PDist = 'euclidean';
 end;
 if nargin < 6
-Standardize = 0;
+    Standardize = 0;
 end;
 
 [MyClg MyMat MyLabels]=PlotSubsetFPKM(FPKM,Gname,head,type,PDist,Standardize);
