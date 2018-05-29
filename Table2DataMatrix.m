@@ -5,6 +5,6 @@ function NewDataMatrix = Table2DataMatrix(OldTable)
 %Useful for clustergram / heatmap analysis
 
 import bioma.data.DataMatrix;
-NewDataMatrix=DataMatrix(table2array(OldTable(:,2:end)),table2array(OldTable(:,1)),OldTable(:,2:end).Properties.VariableNames);
+NewDataMatrix=DataMatrix(double(table2array(OldTable(:,2:end))),table2array(OldTable(:,1)),OldTable(:,2:end).Properties.VariableNames);
 
 end
