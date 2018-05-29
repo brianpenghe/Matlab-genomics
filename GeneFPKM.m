@@ -10,10 +10,10 @@ end;
 
 [m n]=size(FPKM);
 GeneFPKM=[];
-CutOffs=[0.1 1 2 5 10 50 500 5000 Inf];
+CutOffs=[0 0.1 1 5 10 50 500 5000 Inf];
 for i=1:n
     for j=1:8
-        GeneFPKM(j,i)=sum(FPKM(:,i)>=CutOffs(j) & FPKM(:,i)<CutOffs(j+1));
+        GeneFPKM(j,i)=sum(FPKM(:,i)>CutOffs(j) & FPKM(:,i)<=CutOffs(j+1));
     end
 end
 
