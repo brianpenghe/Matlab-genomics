@@ -1,4 +1,4 @@
-function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N)
+function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N,dim)
 %The input matrix is a gene X sample matrix
 %             Sample1 Sample2 Sample3
 %      gene1
@@ -13,6 +13,9 @@ function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N)
 %function [COEFF,SCORE,Latent] = PCAPlot(Matrix,Head,d);
 %This function depends on discretize.m which only works on Matlab R2016b or later
 %please run figure; first
+if nargin < 6
+    dim = 20;
+end
 if nargin < 5
     N=100
 end

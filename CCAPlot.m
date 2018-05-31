@@ -1,4 +1,4 @@
-function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, Head,GeneName,MetaName,d,N)
+function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, Head,GeneName,MetaName,d,N,dim)
 %The input matrices are a gene X sample matrix and a metadata matrix
 %             Sample1 Sample2 Sample3
 %      loggene1
@@ -17,7 +17,9 @@ function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, He
 %This function depends on other functions in the same folder
 %function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, Head,GeneName,MetaName,d,N)
 %This function depends on discretize.m which only works on Matlab R2016b or later
-
+if nargin < 8
+    dim = 20;
+end
 if nargin < 7
     N=100
 end
@@ -32,7 +34,7 @@ AIndex=ACOEFF; %This is just for getting the same dimentionality
 BIndex=BCOEFF;
 [Am An]=size(ACOEFF);
 [Bm Bn]=size(BCOEFF);
-iend=min(20,min(An,Bn))
+iend=min(dim,min(An,Bn))
 for i=1:iend
     [testA,AIndex(:,i)]=sort(ACOEFF(:,i));
     [testB,BIndex(:,i)]=sort(BCOEFF(:,i));
