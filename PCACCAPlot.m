@@ -15,8 +15,8 @@ function [COEFF,SCORE,latent,ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats,UltiCOEFF] 
 %This function depends on discretize.m which only works on Matlab R2016b or later
 %dim is the number of PCs interested
 figure;
-[COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N);
-[ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(SCORE(:,1:dim)',MatrixB,Head,Mat2StrArray([1:dim]'),MetaName,d,N);
+[COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N,dim);
+[ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(SCORE(:,1:dim)',MatrixB,Head,Mat2StrArray([1:dim]'),MetaName,d,N,dim);
 UltiCOEFF=COEFF(:,1:dim)*ACOEFF;
 AIndex=UltiCOEFF;
 for i=1:dim
