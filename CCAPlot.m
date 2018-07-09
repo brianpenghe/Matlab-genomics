@@ -10,7 +10,6 @@ function [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(MatrixA,MatrixB, He
 %      meta3
 
 %CCAPlot is a function to conduct Canonical correlation analysis and generate plots
-%The Matrix is to be transposed if you do Sample PCA for a gene table, by this program
 %filtering and log transformation may have to be performed before using this function
 %array d is required for specifying colors
 %array Head is needed for labeling Sample Names
@@ -26,6 +25,19 @@ end
 if nargin < 6
     error('Not enough input arguments.')
 end
+
+[m n]=size(GeneName);
+if m==1 && n>1
+disp('We transposed your new array')
+NewArr0=GeneName';
+GeneName=NewArr0;
+end;
+[m n]=size(MetaName);
+if m==1 && n>1
+disp('We transposed your new array')
+NewArr0=MetaName';
+MetaName=NewArr0;
+end;
 
 [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = canoncorr(MatrixA',MatrixB');
 colormap(jet);
