@@ -14,3 +14,12 @@ PC and Linux users need to pay attention to the path especially forward slash ve
 
 ## Getting Started
 We will use data from the [Mouse Cell Atlas paper](https://www.cell.com/cell/abstract/S0092-8674(18)30116-8) as an example. Data can be downloaded [here](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM2906444).
+
+### Import Data
+After extracting the file, Make sure the header contains the same number of columns as the data rows. In this case, please manually add "Gene_Name" in front of cell barcodes to make the dimensionality fit.
+Then import data:
+```
+MuscleTable=readtable('/Users/Brian/Downloads/GSM2906444_Muscle_dge.txt','ReadVariableNames',true,'Delimiter',' '); 
+
+```
+
