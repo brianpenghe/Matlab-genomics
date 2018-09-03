@@ -13,27 +13,52 @@ addpath(genpath('/Users/Brian/path_to_your_downloaded_and_extracted_codes'));
 PC and Linux users need to pay attention to the path especially forward slash versus backward slash
 
 ## Getting Started
-We will use data from the [Mouse Cell Atlas paper](https://www.cell.com/cell/abstract/S0092-8674(18)30116-8) as an example. Data can be downloaded [here](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM2906444).
+We will use [Seurat package](https://satijalab.org/seurat/pbmc3k_tutorial.html)'s sample data [here](https://s3-us-west-2.amazonaws.com/10x.files/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz).
 
 ### Import Data
-After extracting the file, Make sure the header contains the same number of columns as the data rows. In this case, please manually add "Gene_Name" in front of cell barcodes to make the dimensionality fit.
-Then import data:
+Extracting the file
 ```
-MuscleTable=readtable('/Users/Brian/Downloads/GSM2906444_Muscle_dge.txt','ReadVariableNames',true,'Delimiter',' '); 
+tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
+```
+The data will be in a folder called "filtered_gene_bc_matrices/hg19"
 
+Add ".txt" to the end of the .mtx and .tsv files to make readtable() work
+
+Then import matrixmarket data:
 ```
-And convert Table to DataMatrix, similar to CellDataSet in Bioconductor
+tempMatrixMarket=readtable('filtered_gene_bc_matrices/hg19/matrix.mtx.txt');
 ```
-Muscledm=Table2DataMatrix(MuscleTable);
+And convert matrixmarket data to Table and then to DataMatrix, a type similar to CellDataSet in Bioconductor
+```
+PMBC_data=spconvert(table2array(tempMatrixMarket(2:end,:)));
+PMBC_cells=readtable('filtered_gene_bc_matrices/hg19/barcodes.tsv.txt','ReadVariableNames',false,'Delimiter','\t');
+PMBC_genes=readtable('filtered_gene_bc_matrices/hg19/genes.tsv.txt','ReadVariableNames',false,'Delimiter','\t');
+temptable=[tempgenes(1:height(array2table(PMBC_data)),:) array2table(PMBC_data)];
+temptable.Properties.VariableNames=[{'Var1'} ValidizeNames(table2array(PMBC_cells)')];
+PMBCdm=Table2DataMatrix(temptable);
 ```
 
 ### Normalize and Filter Data
 Log normalize the data
 ```
-Muscle_perc=log2(Muscledm./sum(Muscledm)*10000+1);
+PMBC_perc=log2(PMBCdm./sum(PMBCdm)*10000+1);
 ```
 Check Data Quality
 ```
-test=Gene10XCount(Muscledm,1);
+test=Gene10XCount(PMBCdm,1);
 ```
-![You get this](https://github.com/brianpenghe/Matlab-genomics/blob/master/img/quality.bmp)
+![untitled](https://user-images.githubusercontent.com/4110443/45000178-a6d8df80-af77-11e8-946e-997b35d97c1d.jpg)
+
+Filter out low-quality cells (less than 500 genes detected) and low-quality genes (detected in less than 0.5% cells)
+```
+PMBC_perc_filtered=PMBC_perc(sum((PMBC_perc>0),2)>sum(sum(test)>500,2)/200,sum(test)>500);
+```
+Calculate high-dispersion genes
+```
+Dispersion=var(PMBC_perc_filtered,0,2)./mean(PMBC_perc_filtered,2);
+[P I]=sort(Dispersion,'descend');
+```
+
+### Clustering and visualization
+
+clustergram(PMBC_perc_filtered(I(1:500),:),'Standardize',0,'DisplayRange',2.5,'Colormap',colormap(jet),'RowPDist','correlation','ColumnPDist','spearman','Symmetric',true,'linkage','complete', 'OptimalLeafOrder',false)
