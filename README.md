@@ -36,4 +36,4 @@ Check Data Quality
 ```
 test=Gene10XCount(Muscledm,1);
 ```
-![You will get this image](http://url/to/img.png)
+![You get this](https://github.com/brianpenghe/Matlab-genomics/blob/master/img/quality.bmp)
