@@ -22,4 +22,18 @@ Then import data:
 MuscleTable=readtable('/Users/Brian/Downloads/GSM2906444_Muscle_dge.txt','ReadVariableNames',true,'Delimiter',' '); 
 
 ```
+And convert Table to DataMatrix, similar to CellDataSet in Bioconductor
+```
+Muscledm=Table2DataMatrix(MuscleTable);
+```
 
+### Normalize and Filter Data
+Log normalize the data
+```
+Muscle_perc=log2(Muscledm./sum(Muscledm)*10000+1);
+```
+Check Data Quality
+```
+test=Gene10XCount(Muscledm,1);
+```
+![You will get this image](http://url/to/img.png)
