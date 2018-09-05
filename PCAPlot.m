@@ -33,7 +33,7 @@ text(SCORE(:,1)+0.5,SCORE(:,2)+0.5,SCORE(:,3)+0.5,Head);
 %OptionZ.FrameRate=60;OptionZ.Duration=11;OptionZ.Periodic=true;
 %CaptureFigVid([-20,10;-110,10;-190,80;-290,10;-380,10],'testvid.avi',OptionZ)
 Index=COEFF; %This is just for getting the same dimentionality
-for i=1:20
+for i=1:dim
     [test,Index(:,i)]=sort(COEFF(:,i));
     SaveCell([GeneName(Index(test<0,i)) Mat2StrArray(test(test<0))],strcat(num2str(i),'_neg.txt'));
     SaveCell(flipud([GeneName(Index(test>0,i)) Mat2StrArray(test(test>0))]),strcat(num2str(i),'_pos.txt'));
@@ -53,10 +53,10 @@ zlabel(strcat('PC3(',strcat(num2str(round(latent(3)/sum(latent)*100)),'%'),')'))
 xlabel(strcat('PC1(',strcat(num2str(round(latent(1)/sum(latent)*100)),'%'),')'))
 text(COEFF(PlotSet,1),COEFF(PlotSet,2),COEFF(PlotSet,3),GeneName(PlotSet))
               
-pcascore=HeatMap(transpose(SCORE(:,20:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[20:-1:1],'ColumnLabels',Head)
+pcascore=HeatMap(transpose(SCORE(:,dim:-1:1)),'Standardize',2,'DisplayRange',2.5,'Symmetric','true','Colormap',colormap(jet),'RowLabels',[dim:-1:1],'ColumnLabels',Head)
 addTitle(pcascore,'PC scores')
 figure;
-donut([latent(1:20)' sum(latent(21:end)')],[strread(num2str([1:20]),'%s');{'Rest'}]',[],'pie')              
+donut([latent(1:dim)' sum(latent(dim+1:end)')],[strread(num2str([1:dim]),'%s');{'Rest'}]',[],'pie')              
               
 end
 
