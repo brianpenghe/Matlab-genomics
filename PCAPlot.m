@@ -23,7 +23,7 @@ if nargin < 4
     error('Not enough input arguments.')
 end
 
-[COEFF,SCORE,latent] = princomp(Matrix');
+[COEFF,SCORE,latent] = pca(Matrix');
 colormap(jet)
 scatter3(SCORE(:,1),SCORE(:,2),SCORE(:,3),50,d,'filled');
 ylabel(strcat('PC2(',strcat(num2str(round(latent(2)/sum(latent)*100)),'%'),')'))
