@@ -28,7 +28,7 @@ Symmetric = true;
 end;
 
 
-A=readtable('test.dat','ReadVariableNames',false);
+A=readtable('test.dat','ReadVariableNames',false,'delimiter','\t');
 B=table2cell(A);
 OrderIndex=GetOrder(flipud(B),Gname);
 MyMat = FPKM(OrderIndex(OrderIndex>0),:);
