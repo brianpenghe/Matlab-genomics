@@ -17,9 +17,12 @@ function [COEFF,SCORE,latent,ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats,UltiCOEFF] 
 figure;
 [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N,dim);
 [ACOEFF,BCOEFF,rCORR,USCORE,VSCORE,stats] = CCAPlot(SCORE(:,1:dim)',MatrixB,Head,Mat2StrArray([1:dim]'),MetaName,d,N,dim);
+[Am An]=size(ACOEFF);
+[Bm Bn]=size(BCOEFF);
+iend=min(dim,min(An,Bn));
 UltiCOEFF=COEFF(:,1:dim)*ACOEFF;
 AIndex=UltiCOEFF;
-for i=1:dim
+for i=1:iend
 [testA,AIndex(:,i)]=sort(UltiCOEFF(:,i));
 SaveCell([GeneName(AIndex(testA<0,i)) Mat2StrArray(testA(testA<0))],strcat(num2str(i),'_gene_neg.txt'));
 SaveCell(flipud([GeneName(AIndex(testA>0,i)) Mat2StrArray(testA(testA>0))]),strcat(num2str(i),'_gene_pos.txt'));
