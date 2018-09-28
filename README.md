@@ -13,7 +13,7 @@ addpath(genpath('/Users/Brian/path_to_your_downloaded_and_extracted_codes'));
 PC and Linux users need to pay attention to the path especially forward slash versus backward slash
 
 ## Getting Started
-We will use [Seurat package](https://satijalab.org/seurat/pbmc3k_tutorial.html)'s sample data [here](https://s3-us-west-2.amazonaws.com/10x.files/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz).
+We will use [Seurat package](https://satijalab.org/seurat/pbmc3k_tutorial.html)'s sample data [here](https://s3-us-west-2.amazonaws.com/10x.files/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz) with Matlab 2018a on Mac.
 
 ### Import Data
 Extracting the file
@@ -30,12 +30,14 @@ tempMatrixMarket=readtable('filtered_gene_bc_matrices/hg19/matrix.mtx.txt');
 ```
 And convert matrixmarket data to Table and then to DataMatrix, a type similar to CellDataSet in Bioconductor
 ```
-PMBC_data=spconvert(table2array(tempMatrixMarket(2:end,:)));
-PMBC_cells=readtable('filtered_gene_bc_matrices/hg19/barcodes.tsv.txt','ReadVariableNames',false,'Delimiter','\t');
-PMBC_genes=readtable('filtered_gene_bc_matrices/hg19/genes.tsv.txt','ReadVariableNames',false,'Delimiter','\t');
-temptable=[tempgenes(1:height(array2table(PMBC_data)),:) array2table(PMBC_data)];
-temptable.Properties.VariableNames=[{'Var1'} ValidizeNames(table2array(PMBC_cells)')];
-PMBCdm=Table2DataMatrix(temptable);
+PMBC_data=spconvert(table2array(tempMatrixMarket(2:end,:))); %convert sparse matrix to matrix
+PMBC_cells=readtable('filtered_gene_bc_matrices/hg19/barcodes.tsv.txt','ReadVariableNames',false,'Delimiter','\t'); %import cell names
+PMBC_genes=readtable('filtered_gene_bc_matrices/hg19/genes.tsv.txt','ReadVariableNames',false,'Delimiter','\t'); %import gene names
+temp=table2array(PMBC_genes); %convert gene name table to cell array
+tempgenes=array2table(strcat(temp(:,1),'_',temp(:,2))); %concatenate gene ID and gene name so that no duplicates are possible
+temptable=[tempgenes(1:height(array2table(PMBC_data)),:) array2table(PMBC_data)]; %add gene names to the table
+temptable.Properties.VariableNames=[{'Var1'} ValidizeNames(table2array(PMBC_cells)')]; %add cell names to the table properties
+PMBCdm=Table2DataMatrix(temptable); %convert table to DataMatrix format
 ```
 
 ### Normalize and Filter Data
@@ -67,3 +69,7 @@ clustergram(PMBC_perc_filtered(I(1:500),:),'Standardize',0,'DisplayRange',2.5,'C
 
 Now you get a clustergram which can be annotated interactively following [Matlab Clustergram Manual](https://www.mathworks.com/help/bioinfo/ref/clustergram.html) to make it look like this:
 <img width="711" alt="screen shot 2018-09-03 at 2 47 38 pm" src="https://user-images.githubusercontent.com/4110443/45002131-5c139380-af88-11e8-85d5-7ef82b20aff5.png">
+
+#### Check expression of specific gene lists
+
+If you want to 
