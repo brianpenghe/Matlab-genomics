@@ -123,6 +123,12 @@ scatter(mappedX(ClusterID==8,1),mappedX(ClusterID==8,2),50,[1 0 0],'.')
 ```
 ![untitled](https://user-images.githubusercontent.com/4110443/46250886-1ae09900-c3f9-11e8-8fd1-f76430d665b1.jpg)
 
-#### Check expression of specific gene lists
+#### Check expression of a specific gene
+```
+scatter(mappedX(:,1),mappedX(:,2),50,PMBC_perc('ENSG00000105369_CD79A',get(PMBCClg,'ColumnLabels')),'.')
+colormap(hot)
+```
+![untitled](https://user-images.githubusercontent.com/4110443/46250929-824b1880-c3fa-11e8-85ef-b31f576d8dd1.jpg)
+
 
 
