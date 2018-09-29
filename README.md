@@ -63,13 +63,35 @@ Dispersion=var(PMBC_perc_filtered,0,2)./mean(PMBC_perc_filtered,2);
 
 ### Clustering and visualization
 
-clustergram(PMBC_perc_filtered(I(1:500),:),'Standardize',0,'DisplayRange',2.5,'Colormap',colormap(jet),'RowPDist','correlation','ColumnPDist','spearman','Symmetric',true,'linkage','complete', 'OptimalLeafOrder',false)
+PMBCClg=clustergram(PMBC_perc_filtered(I(1:500),:),'Standardize',0,'DisplayRange',2.5,'Colormap',colormap(jet),'RowPDist','correlation','ColumnPDist','spearman','Symmetric',true,'linkage','complete', 'OptimalLeafOrder',false)
 
 <img width="661" alt="screen shot 2018-09-03 at 2 17 16 pm" src="https://user-images.githubusercontent.com/4110443/45001694-25d41500-af84-11e8-9632-aeca4e5493e9.png">
 
-Now you get a clustergram which can be annotated interactively following [Matlab Clustergram Manual](https://www.mathworks.com/help/bioinfo/ref/clustergram.html) to make it look like this:
+Now you get a clustergram which can be annotated interactively following [Matlab Clustergram Manual](https://www.mathworks.com/help/bioinfo/ref/clustergram.html) to make it look like the following
+
 <img width="711" alt="screen shot 2018-09-03 at 2 47 38 pm" src="https://user-images.githubusercontent.com/4110443/45002131-5c139380-af88-11e8-85d5-7ef82b20aff5.png">
 
 #### Check expression of specific gene lists
 
-If you want to 
+If you want to see expression levels of a set of genes, you can put the names of them in text.dat
+![screen shot 2018-09-28 at 4 29 08 pm](https://user-images.githubusercontent.com/4110443/46237810-c7f4dc00-c33b-11e8-9ace-9cd51846d6bf.png)
+
+And then import this list to an array
+```
+GenesOfInterest=table2array(readtable('test.dat','ReadVariableNames',false,'Delimiter','\t'))
+```
+Then plot into a HeatMap matching the cell order of your clustergram
+```
+HeatMap(PMBC_perc(GenesOfInterest,get(PMBCClg,'ColumnLabels')),'Standardize',2,'Colormap',colormap(jet),'Symmetric',true,'DisplayRange',2.5)
+```
+<img width="675" alt="screen shot 2018-09-28 at 4 58 52 pm" src="https://user-images.githubusercontent.com/4110443/46238332-e78e0380-c33f-11e8-9811-6623f8a46035.png">
+
+*If you only know the gene name (e.g. HOPX) but not the gene ID, you can look it up using this:*
+```
+get(PMBCdm(strcontain('HOPX',get(PMBCdm,'RowNames')),:),'RowNames')
+```
+*It will show:*
+![screen shot 2018-09-28 at 5 04 58 pm](https://user-images.githubusercontent.com/4110443/46238414-aa764100-c340-11e8-8554-5be376fa6801.png)
+
+
+    
