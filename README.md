@@ -90,8 +90,39 @@ HeatMap(PMBC_perc(GenesOfInterest,get(PMBCClg,'ColumnLabels')),'Standardize',2,'
 ```
 get(PMBCdm(strcontain('HOPX',get(PMBCdm,'RowNames')),:),'RowNames')
 ```
-*It will show:*
+*It will show*
+
 ![screen shot 2018-09-28 at 5 04 58 pm](https://user-images.githubusercontent.com/4110443/46238414-aa764100-c340-11e8-8554-5be376fa6801.png)
 
+### t-SNE plot
+Before we do this, let's first drop down our manually assigned cell clusters from clustering analysis.
+Based on the coloring in the example image, the clusters are:
+```
+ClusterID=[repmat([1],1,451) repmat([0],1,44) repmat([2],1,137) repmat([3],1,23) repmat([0],1,664) repmat([4],1,119) repmat([0],1,20) repmat([5],1,313) repmat([0],1,195) repmat([6],1,54) repmat([7],1,202) repmat([8],1,244) repmat([0],1,15)];
+```
+Now calculate t-SNE coordinates and plot
+```
+mappedX=tsne(double(PMBC_perc_filtered(I(1:500),get(PMBCClg,'ColumnLabels')))','Algorithm','barneshut','NumPCAComponents',30,'Distance','spearman','Perplexity',30);
+scatter(mappedX(:,1),mappedX(:,2),50,[0.8 0.8 0.8],'.')
+``` 
+*You should right click mappedX in Workspace window to save it to a file. So that next time you can use mappedX=importdata(); to import it*
 
-    
+Now paint the t-SNE plot with cluster colors.
+```
+scatter(mappedX(ClusterID==1),1),mappedX(ClusterID==1,2),10,[0 0 1],'.')
+scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),10,[0 0 1],'.')
+scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),50,[0 0 1],'.')
+scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),50,[0 0.45 0.74],'.')
+scatter(mappedX(ClusterID==2,1),mappedX(ClusterID==2,2),50,[0.85 0.33 0.1],'.')
+scatter(mappedX(ClusterID==3,1),mappedX(ClusterID==3,2),50,[0.93 0.69 0.13],'.')
+scatter(mappedX(ClusterID==4,1),mappedX(ClusterID==4,2),50,[0.49 0.18 0.56],'.')
+scatter(mappedX(ClusterID==5,1),mappedX(ClusterID==5,2),50,[0.47 0.67 0.19],'.')
+scatter(mappedX(ClusterID==6,1),mappedX(ClusterID==6,2),50,[0.3 0.75 0.93],'.')
+scatter(mappedX(ClusterID==7,1),mappedX(ClusterID==7,2),50,[0.64 0.08 0.18],'.')
+scatter(mappedX(ClusterID==8,1),mappedX(ClusterID==8,2),50,[1 0 0],'.')
+```
+![untitled](https://user-images.githubusercontent.com/4110443/46250886-1ae09900-c3f9-11e8-8fd1-f76430d665b1.jpg)
+
+#### Check expression of specific gene lists
+
+
