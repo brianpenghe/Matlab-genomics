@@ -132,15 +132,15 @@ colormap(hot)
 ```
 ![untitled](https://user-images.githubusercontent.com/4110443/46250929-824b1880-c3fa-11e8-85ef-b31f576d8dd1.jpg)
 
-##Discussions
-###Parameter optimizations
+## Discussions
+### Parameter optimizations
 This tutorial tries to present an overview of what we can do with a subset of the scripts here. It uses arbitrary parameters, leaving space for users to play around with their own sets of parameters based on their own trade-offs. Please feel free to change parameters, including gene detection threshold, cell rarity threshold, clustering algorithms, which principal components to use, t-SNE perplexity etc. Additional discussions are welcome. Maximal coding flexibility is in the hands of users.
 
-###Data filtering and batch effect control
+### Data filtering and batch effect control
 The author is strongly against the idea of a magic blackbox that beautifies the data. Existing methods usually "regress out" or "eliminate" so-called "batch-effects" instead of understanding what exactly they are. So in this tutorial the author does not intentionally remove certain groups of genes or those that dance with them because they may have biological meanings to users (stress, cell-cycle phases, duplication etc.).
 
-###Other scripts not mentioned here
+### Other scripts not mentioned here
 Due to the limit of time and space. Many other useful scripts are not mentioned in this tutorial. Users are welcome to explore them or raise issues about them.
 
-###Conclusions
+### Conclusions
 This tutorial demonstrates the ease with these scripts to analyze single-cell RNA-seq data. These scripts are welcome to be used and modified for broader studies. The repo here doesn't represent a final product but instead an initial effort to build a Matlab community that has been underrepresented in Genomics field.
