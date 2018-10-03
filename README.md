@@ -102,16 +102,28 @@ Based on the coloring in the example image, the clusters are:
 ```
 ClusterID=[repmat([1],1,451) repmat([0],1,44) repmat([2],1,137) repmat([3],1,23) repmat([0],1,664) repmat([4],1,119) repmat([0],1,20) repmat([5],1,313) repmat([0],1,195) repmat([6],1,54) repmat([7],1,202) repmat([8],1,244) repmat([0],1,15)];
 ```
+Now inspect top 30 PCs for the normalized dataset (you can use absolute values, if you remove the function zscore())
+```
+PCAPlot(zscore(double(PMBC_perc_filtered(I(1:500),get(PMBCClg,'ColumnLabels')))')',get(PMBCClg,'ColumnLabels'),get(PMBC_perc_filtered(I(1:500),:),'RowNames'),ClusterID,100,30);
+```
+Among the outputs you get an image of PC scores, where each row represents each PC's scores across individual cells, ordered in the same way as the clustergram you generated.
+<img width="512" alt="screen shot 2018-10-02 at 10 57 15 pm" src="https://user-images.githubusercontent.com/4110443/46392557-9ad75f00-c696-11e8-9ab9-d598981db1d5.png">
+
+Based on this diagram, we see that only the top 9 PCs show cell-type specificity. So we only use these 9 PCs to plot t-SNE.
+
 Now calculate t-SNE coordinates and plot
 ```
-mappedX=tsne(double(PMBC_perc_filtered(I(1:500),get(PMBCClg,'ColumnLabels')))','Algorithm','barneshut','NumPCAComponents',30,'Distance','spearman','Perplexity',30);
+mappedX=tsne(zscore(double(PMBC_perc_filtered(I(1:500),get(PMBCClg,'ColumnLabels')))'),'Algorithm','barneshut','NumPCAComponents',9,'Distance','spearman','Perplexity',30);
 scatter(mappedX(:,1),mappedX(:,2),50,[0.8 0.8 0.8],'.')
 ``` 
+![untitled](https://user-images.githubusercontent.com/4110443/46392760-5b5d4280-c697-11e8-9754-b8db194e5e2a.jpg)
+
 *You should right click mappedX in Workspace window to save it to a file. So that next time you can use mappedX=importdata(); to import it*
 
 Now paint the t-SNE plot with cluster colors.
 ```
-scatter(mappedX(ClusterID==1),1),mappedX(ClusterID==1,2),10,[0 0 1],'.')
+hold on
+scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),10,[0 0 1],'.')
 scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),10,[0 0 1],'.')
 scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),50,[0 0 1],'.')
 scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),50,[0 0.45 0.74],'.')
@@ -123,18 +135,19 @@ scatter(mappedX(ClusterID==6,1),mappedX(ClusterID==6,2),50,[0.3 0.75 0.93],'.')
 scatter(mappedX(ClusterID==7,1),mappedX(ClusterID==7,2),50,[0.64 0.08 0.18],'.')
 scatter(mappedX(ClusterID==8,1),mappedX(ClusterID==8,2),50,[1 0 0],'.')
 ```
-![untitled](https://user-images.githubusercontent.com/4110443/46250886-1ae09900-c3f9-11e8-8fd1-f76430d665b1.jpg)
+![untitled](https://user-images.githubusercontent.com/4110443/46392851-aa0adc80-c697-11e8-9582-e92dd10096c0.jpg)
 
 #### Check expression of a specific gene
 ```
+figure
 scatter(mappedX(:,1),mappedX(:,2),50,PMBC_perc('ENSG00000105369_CD79A',get(PMBCClg,'ColumnLabels')),'.')
 colormap(hot)
 ```
-![untitled](https://user-images.githubusercontent.com/4110443/46250929-824b1880-c3fa-11e8-85ef-b31f576d8dd1.jpg)
+![untitled](https://user-images.githubusercontent.com/4110443/46392894-d1fa4000-c697-11e8-865b-c94143d9ba9b.jpg)
 
 ## Discussions
 ### Parameter optimizations
-This tutorial tries to present an overview of what we can do with a subset of the scripts here. It uses arbitrary parameters, leaving space for users to play around with their own sets of parameters based on their own trade-offs. Please feel free to change parameters, including gene detection threshold, cell rarity threshold, clustering algorithms, which principal components to use, t-SNE perplexity etc. Additional discussions are welcome. Maximal coding flexibility is in the hands of users.
+This tutorial tries to present an overview of what we can do with a subset of the scripts here. It uses arbitrary parameters, leaving space for users to play around with their own sets of parameters based on their own trade-offs. Please feel free to change parameters, including gene detection threshold, cell rarity threshold, clustering algorithms, whether to use z-score to do t-SNE, k-means clustering or hierarchical, remove irrelevant PCs first or cluster first, which principal components to use, t-SNE perplexity etc. Additional discussions are welcome. Maximal coding flexibility is in the hands of users.
 
 ### Data filtering and batch effect control
 The author is strongly against the idea of a magic blackbox that beautifies the data. Existing methods usually "regress out" or "eliminate" so-called "batch-effects" instead of understanding what exactly they are. So in this tutorial the author does not intentionally remove certain groups of genes or those that dance with them because they may have biological meanings to users (stress, cell-cycle phases, duplication etc.).
