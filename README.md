@@ -20,24 +20,13 @@ Extracting the file on Unix terminal (or double click on MatLab Finder)
 ```
 tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
 ```
-The data will be in a folder called "filtered_gene_bc_matrices/hg19"
-
-Add ".txt" to the end of the .mtx and .tsv files to make [readtable()](https://www.mathworks.com/help/matlab/ref/readtable.html) work
-
-Then import matrixmarket data:
+The data will be in a folder called "filtered_gene_bc_matrices/hg19". Go to that folder.
 ```
-tempMatrixMarket=readtable('filtered_gene_bc_matrices/hg19/matrix.mtx.txt');
+cd filtered_gene_bc_matrices/hg19/
 ```
-And convert matrixmarket data to Table and then to [DataMatrix](https://www.mathworks.com/help/bioinfo/ug/representing-expression-data-values-in-datamatrix-objects.html), a type similar to [CellDataSet](https://rdrr.io/bioc/monocle/man/CellDataSet.html) in [Monocle](https://rdrr.io/bioc/monocle/) and [SeuratObject](https://rdrr.io/github/satijalab/seurat/man/CreateSeuratObject.html) in [Seurat](https://rdrr.io/github/satijalab/seurat/), on R platform.
+Then import matrixmarket data to [DataMatrix](https://www.mathworks.com/help/bioinfo/ug/representing-expression-data-values-in-datamatrix-objects.html), a type similar to [CellDataSet](https://rdrr.io/bioc/monocle/man/CellDataSet.html) in [Monocle](https://rdrr.io/bioc/monocle/) and [SeuratObject](https://rdrr.io/github/satijalab/seurat/man/CreateSeuratObject.html) in [Seurat](https://rdrr.io/github/satijalab/seurat/), on R platform.
 ```
-PMBC_data=spconvert(table2array(tempMatrixMarket(2:end,:))); %convert sparse matrix to matrix
-PMBC_cells=readtable('filtered_gene_bc_matrices/hg19/barcodes.tsv.txt','ReadVariableNames',false,'Delimiter','\t'); %import cell names
-PMBC_genes=readtable('filtered_gene_bc_matrices/hg19/genes.tsv.txt','ReadVariableNames',false,'Delimiter','\t'); %import gene names
-temp=table2array(PMBC_genes); %convert gene name table to cell array
-tempgenes=array2table(strcat(temp(:,1),'_',temp(:,2))); %concatenate gene ID and gene name so that no duplicates are possible
-temptable=[tempgenes(1:height(array2table(PMBC_data)),:) array2table(PMBC_data)]; %add gene names to the table
-temptable.Properties.VariableNames=[{'Var1'} ValidizeNames(table2array(PMBC_cells)')]; %add cell names to the table properties
-PMBCdm=Table2DataMatrix(temptable); %convert table to DataMatrix format
+PMBCdm=read10XCount('matrix.mtx','genes.tsv','barcodes.tsv');
 ```
 
 ### Normalize and Filter Data
