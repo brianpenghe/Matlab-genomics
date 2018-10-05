@@ -52,15 +52,19 @@ Dispersion=var(PMBC_perc_filtered,0,2)./mean(PMBC_perc_filtered,2);
 [P I]=sort(Dispersion,'descend');
 ```
 
-### Clustering and visualization
+### Supervised Clustering and visualization
 
-PMBCClg=clustergram(PMBC_perc_filtered(I(1:500),:),'Standardize',0,'DisplayRange',2.5,'Colormap',colormap(jet),'RowPDist','correlation','ColumnPDist','spearman','Symmetric',true,'linkage','complete', 'OptimalLeafOrder',false)
+PMBCClg=clustergram(PMBC_perc_filtered(I(1:2000),:),'Standardize',0,'DisplayRange',7.5,'Colormap',colormap(jet),'RowPDist','correlation','ColumnPDist','spearman','Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false)
 
-<img width="661" alt="screen shot 2018-09-03 at 2 17 16 pm" src="https://user-images.githubusercontent.com/4110443/45001694-25d41500-af84-11e8-9632-aeca4e5493e9.png">
+<img width="735" alt="screen shot 2018-10-05 at 3 15 41 pm" src="https://user-images.githubusercontent.com/4110443/46562583-8c18c400-c8b1-11e8-9b8c-6d3828650f16.png">
 
 Now you get a clustergram which can be annotated interactively following [Matlab Clustergram Manual](https://www.mathworks.com/help/bioinfo/ref/clustergram.html) to make it look like the following
 
-<img width="711" alt="screen shot 2018-09-03 at 2 47 38 pm" src="https://user-images.githubusercontent.com/4110443/45002131-5c139380-af88-11e8-85d5-7ef82b20aff5.png">
+<img width="816" alt="screen shot 2018-10-05 at 4 10 16 pm" src="https://user-images.githubusercontent.com/4110443/46563949-321bfc80-c8b9-11e8-91a8-a37fd0e8f0ea.png">
+
+And save (by right clicking) individual clusters into workspace as Cluster1, Cluster2 etc.
+
+<img width="472" alt="screen shot 2018-10-05 at 3 33 42 pm" src="https://user-images.githubusercontent.com/4110443/46563037-1f52f900-c8b4-11e8-846c-14735f7538d1.png">
 
 #### Check expression of specific gene lists
 
