@@ -19,10 +19,16 @@ end
 
 figure;
 if SortYes == 0
-    bar(GeneFPKM(8:-1:1,:)','stack')
+    b=bar(GeneFPKM(8:-1:1,:)','stack','FaceColor','flat');
+    for k=1:size(GeneFPKM(8:-1:1,:)',2)
+        b(k).CData = k;
+    end
 else
     [P I]=sort(sum(GeneFPKM));
-    bar(GeneFPKM(8:-1:1,I)','stack')
+    b=bar(GeneFPKM(8:-1:1,I)','stack','FaceColor','flat');
+    for k=1:size(GeneFPKM(8:-1:1,:)',2)
+        b(k).CData = k;
+    end
 end
 colormap(flipud(colormap(jet)))
 end

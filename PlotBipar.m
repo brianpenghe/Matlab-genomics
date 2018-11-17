@@ -1,6 +1,6 @@
 function biog = PlotBipar(Filename,Cap,TransformMethod,Watershed,GraphSize)
 %PlotBipar plots a bipartite graph based on the matrix stored in the file Filename
-%The matrix in the Filaname is a logical matrix where Cij~=0 indicates i -> j. Cij is the weight of the edge
+%The matrix in the Filename is a logical matrix where Cij~=0 indicates i -> j. Cij is the weight of the edge
 %RowNames and VariableNames have to be included in the Filename
 %It also converts the matrix into a square one
 % Old matrix               New Matrix
