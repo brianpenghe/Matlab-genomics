@@ -44,7 +44,7 @@ test=Gene10XCount(PMBCdm,1);
 ```
 The plot shows the numbers of genes with 1 count/2 count/3count etc. The height of each bar represents the total number of genes detected in each cell. 
 
-![untitled](https://user-images.githubusercontent.com/4110443/45000178-a6d8df80-af77-11e8-946e-997b35d97c1d.jpg)
+![untitled](https://user-images.githubusercontent.com/4110443/48728535-0bf0b880-ebea-11e8-8f87-d1ea53cde1cc.jpg)
 
 Filter out low-quality cells (less than 500 genes detected) and low-quality genes (detected in less than 0.5% cells)
 ```
