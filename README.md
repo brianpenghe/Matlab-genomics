@@ -28,6 +28,10 @@ Then import matrixmarket data to [DataMatrix](https://www.mathworks.com/help/bio
 ```
 PMBCdm=read10XCount('matrix.mtx','genes.tsv','barcodes.tsv');
 ```
+or, by default if you used CellRanger to generate matrix.mtx, genes.tsv and barcodes.tsv in the current folder
+```
+PMBCdm=read10XCount();
+```
 
 ### Normalize and Filter Data
 Log normalize the data
