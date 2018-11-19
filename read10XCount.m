@@ -20,6 +20,8 @@ Genes_table2=array2table(strcat(Genes_array(:,1),'_',Genes_array(:,2)));
 Matrix_table=[Genes_table2(1:height(array2table(Matrix_matrix)),:) array2table(Matrix_matrix)];
 Matrix_table.Properties.VariableNames=[{'Var1'} ValidizeNames(table2array(Cells_table)')];
 Matrix_dm=Table2DataMatrix(Matrix_table);
-
+delete(strcat(MtxFile,'.txt'))
+delete(strcat(GeneFile,'.txt'))
+delete(strcat(CellFile,'.txt'))
 end
 
