@@ -36,6 +36,12 @@ Index=COEFF; %This is just for getting the same dimentionality
 [m n]=size(Matrix);
 DIM=min(dim,n-1);
 HeatMap(COEFF(:,1:DIM),'Displayrange',2.5,'Standardize',2,'colormap',colormap(jet))
+figure
+for i=1:min(DIM,30)                           
+    subplot(5,6,i)
+    scatter(SCORE(:,i),d,10,'.')
+    title(strcat('PC',num2str(i)))
+end
 for i=1:DIM
     [test,Index(:,i)]=sort(COEFF(:,i));
     SaveCell([GeneName(Index(test<0,i)) Mat2StrArray(test(test<0))],strcat(num2str(i),'_neg.txt'));
