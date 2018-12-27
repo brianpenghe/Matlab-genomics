@@ -8,7 +8,7 @@ Therefore, I've assembled a set of handy scripts, some of which are borrowed fro
 Download the whole folder, and then point Matlab to this folder as one of customer scripts. This is the code for Mac Users:
 
 ```
-addpath(genpath('/Users/Brian/path_to_your_downloaded_and_extracted_codes')); 
+addpath(genpath('/Users/path_to_your_downloaded_and_extracted_codes')); 
 ```
 *PC and Linux users need to pay attention to the path especially forward slash versus backward slash*
 
@@ -16,6 +16,8 @@ addpath(genpath('/Users/Brian/path_to_your_downloaded_and_extracted_codes'));
 We will use [Seurat package](https://satijalab.org/seurat/pbmc3k_tutorial.html)'s sample data [here](https://s3-us-west-2.amazonaws.com/10x.files/samples/cell/pbmc3k/pbmc3k_filtered_gene_bc_matrices.tar.gz) with Matlab 2018a on Mac.
 
 ### Import Data
+*These commands are for Unix terminal*
+
 Extracting the file on Unix terminal (or double click on MatLab Finder)
 ```
 tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
@@ -24,7 +26,10 @@ The data will be in a folder called "filtered_gene_bc_matrices/hg19". Go to that
 ```
 cd filtered_gene_bc_matrices/hg19/
 ```
-Then import matrixmarket data to [DataMatrix](https://www.mathworks.com/help/bioinfo/ug/representing-expression-data-values-in-datamatrix-objects.html), a type similar to [CellDataSet](https://rdrr.io/bioc/monocle/man/CellDataSet.html) in [Monocle](https://rdrr.io/bioc/monocle/) and [SeuratObject](https://rdrr.io/github/satijalab/seurat/man/CreateSeuratObject.html) in [Seurat](https://rdrr.io/github/satijalab/seurat/), on R platform.
+*Below are commands for Matlab. Please make sure your current directory is correct (see picture below)*
+![screen shot 2018-12-27 at 11 00 24 am](https://user-images.githubusercontent.com/4110443/50491358-bff21a00-09c6-11e9-8582-9b3dab309583.png)
+
+Then import matrixmarket data to [DataMatrix](https://www.mathworks.com/help/bioinfo/ug/representing-expression-data-values-in-datamatrix-objects.html), a type similar to [CellDataSet](https://rdrr.io/bioc/monocle/man/CellDataSet.html) used by [Monocle](https://rdrr.io/bioc/monocle/) and [SeuratObject](https://rdrr.io/github/satijalab/seurat/man/CreateSeuratObject.html) in [Seurat](https://rdrr.io/github/satijalab/seurat/), on R platform.
 ```
 PMBCdm=read10XCount('matrix.mtx','genes.tsv','barcodes.tsv');
 ```
