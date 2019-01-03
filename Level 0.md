@@ -52,7 +52,7 @@ ClusterID(GetOrder(get(Cluster8,'ColumnLabels'),get(PMBCClg,'ColumnLabels')))=8;
 ```
 Now inspect top 30 PCs for the normalized dataset (you can use normalized values, if you use the function [zscore()](https://www.mathworks.com/help/stats/zscore.html?searchHighlight=zscore&s_tid=doc_srchtitle)).
 ```
-[COEFF,SCORE,latent]=PCAPlot(double(PMBC_perc_filtered(I(1:2000),get(PMBCClg,'ColumnLabels'))),get(PMBCClg,'ColumnLabels'),get(PMBC_perc_filtered(I(1:2000),:),'RowNames'),ClusterID',100,30);
+[COEFF,SCORE,latent]=PCAPlot(double(PMBC_perc_filtered(I(1:2000),get(PMBCClg,'ColumnLabels'))),get(PMBCClg,'ColumnLabels'),get(PMBC_perc_filtered(I(1:2000),:),'RowNames'),UMICount,100,30);
 ```
 Among the outputs you get an image of PC scores, where each row represents each PC's scores across individual cells, ordered in the same way as the clustergram you generated.
 <img width="515" alt="screen shot 2018-10-05 at 6 41 52 pm" src="https://user-images.githubusercontent.com/4110443/46566430-29382480-c8d3-11e8-8796-3a69eb74c33c.png">
