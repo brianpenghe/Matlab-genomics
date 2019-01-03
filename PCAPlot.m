@@ -10,7 +10,7 @@ function [COEFF,SCORE,latent] = PCAPlot(Matrix,Head,GeneName,d,N,dim)
 %array d is required for specifying colors
 %array Head is needed for labeling Sample Names
 %This function depends on other functions in the same folder
-%function [COEFF,SCORE,Latent] = PCAPlot(Matrix,Head,d);
+%function [COEFF,SCORE,Latent] = PCAPlot(Matrix,Head,GeneName,d,N,dim)
 %This function depends on discretize.m which only works on Matlab R2016b or later
 %please run figure; first
 if nargin < 6
