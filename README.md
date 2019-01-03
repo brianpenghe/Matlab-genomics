@@ -61,6 +61,70 @@ Dispersion=var(PMBC_perc_filtered,0,2)./mean(PMBC_perc_filtered,2);
 [P I]=sort(Dispersion,'descend');
 ```
 
+*For the downstream analyses, following the codes shown above, [a straightforward and naive method is provided here](https://github.com/brianpenghe/Matlab-genomics/blob/master/Level%200.md), which directly clusters the cells and comments on gene signature and dimensionality without bioinformatic tricks. More sophisticated methods are given below (please continue reading).*
+
+### Extracting cell type-specific genes for clustering analysis
+Mainstream methods like Seurat cluster cells first and then identify genes statistically enriched in each cluster. This method hardly presents fine structures especially intra-cluster details that biologists usually care about. Biologists usually want to see how cell type-specific genes contribute to each cell type and wants to interactively supervise the process of pattern identification. Therefore, it's worthwhile to find genes that are cell type-specific. Dispersion (variance/mean of log-transformed abundance estimate) is only able to largely remove cell-cycle associated and house-keeping genes but can't tell whether the high dispersion of a gene across cells is meanful or simply due to noise. One key difference between real cell markers and noise is that real markers usually have their followers due to tight regulation of the gene network. So they sit in "modules" of co-regulated genes that are highly correlated with each other. This type of strong co-linearity can be captured as "deepest branches" of a phylogenetic tree of genes. Below I'm showing you how this Deep-tree analysis identifies markers.
+
+Here I use the top 4000 high-dispersion genes as an initial input.
+```
+PMBCDeepTree=DeepTreeCluster(PMBC_perc_filtered(I(1:4000),:),0.8,2)
+```
+<img width="466" alt="screen shot 2018-12-28 at 9 09 40 pm" src="https://user-images.githubusercontent.com/4110443/50533750-9d0a5780-0ae5-11e9-98b7-9f2ff7d8d917.png">
+
+This image shows a two-way clustergram of all the 4000 genes, most of which are sporadic noises without coherent patterns, seen as green areas with random red dots. The co-expressed genes, however, form deep branches in the tree, highlighted with distinguishable colors in the dendrogram. These 149 genes were extracted and used for a second clustering shown below.
+
+<img width="446" alt="screen shot 2018-12-28 at 9 26 15 pm" src="https://user-images.githubusercontent.com/4110443/50533822-469e1880-0ae7-11e9-8d54-dcfdedef34de.png">
+
+which can be annotated interactively following [Matlab Clustergram Manual](https://www.mathworks.com/help/bioinfo/ref/clustergram.html) to make it look like the following
+
+<img width="656" alt="screen shot 2018-12-29 at 9 20 13 am" src="https://user-images.githubusercontent.com/4110443/50540670-19835180-0b4b-11e9-9189-bc425c61313d.png">
+
+In addition to the 8 clusters Seurat identified, small clusters (of as few as 3 cells) can also be identified, summing up to 11 cell types. In fact, high-dispersion cut favors identification of rare cell types but certain clustering methods may ignore small clusters of cells. Here we see that even for small clusters they may still be well supported by multiple marker genes that are co-expressed.
+
+Promisingly, these 149 marker genes contain 8 of the 9 cherry-picked marker genes in [Seurat Tutorial](https://satijalab.org/seurat/pbmc3k_tutorial.html), confirming that real markers should be only a fraction of high-dispersion genes. CD3E is a marker for the most dominant cell type that was not captured by the "deep-tree" method but can still be retrived by looking for significantly different genes between defined clusters.
+
+#### Checking gene expressions
+Here I use the 9 markers shown in [Seurat Tutorial](https://satijalab.org/seurat/pbmc3k_tutorial.html) as an example to plot a 2-D heatmap.
+```
+SeuratMarkers={'ENSG00000156738_MS4A1','ENSG00000115523_GNLY','ENSG00000198851_CD3E','ENSG00000170458_CD14','ENSG00000179639_FCER1A','ENSG00000203747_FCGR3A','ENSG00000090382_LYZ','ENSG00000163736_PPBP','ENSG00000153563_CD8A'};
+HeatMap(PMBC_perc_filtered(SeuratMarkers,get(PMBCDeepTree,'ColumnLabels')),'Standardize',2,'DisplayRange',2.5,'Colormap',colormap(jet),'Symmetric',true)
+```
+A HeatMap matching the cell order of the deep-tree clustergram is then generated.
+![screen shot 2018-12-29 at 9 39 50 am](https://user-images.githubusercontent.com/4110443/50540828-c9f25500-0b4d-11e9-91ae-4277d56fd15c.png)
+
+*If you only know the gene name (e.g. HOPX) but not the gene ID, you can look it up using this:*
+```
+get(PMBCdm(strcontain('HOPX',get(PMBCdm,'RowNames')),:),'RowNames')
+```
+*It will show*
+
+![screen shot 2018-09-28 at 5 04 58 pm](https://user-images.githubusercontent.com/4110443/46238414-aa764100-c340-11e8-8554-5be376fa6801.png)
+
+### t-SNE plot
+If you want to use the clusters defined by hierarchical clustering, let's first drop down our manually assigned cell clusters from clustering analysis by right clicking the branches and saving them as Cluster1, Cluster2...
+Based on the coloring in the example image, the clusters are:
+Cluster 1 - Orange
+Cluster 2 - Purple
+Cluster 3 - Blue
+Cluster 4 - Dark Green
+Cluster 5 - Dark Blue
+Cluster 6 - Pink
+Cluster 7 - Cyan
+Cluster 8 - Red
+Cluster 9 - Green
+Cluster 10 - Yellow
+```
+ClusterID=repmat([0],size(get(PMBCDeepTree,'ColumnLabels')));
+ClusterID(GetOrder(get(Cluster1,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=1;
+ClusterID(GetOrder(get(Cluster2,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=2;
+ClusterID(GetOrder(get(Cluster3,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=3;
+ClusterID(GetOrder(get(Cluster4,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=4;
+ClusterID(GetOrder(get(Cluster5,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=5;
+ClusterID(GetOrder(get(Cluster6,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=6;
+ClusterID(GetOrder(get(Cluster7,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=7;
+ClusterID(GetOrder(get(Cluster8,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=8;
+```
 
 ## Discussions
 ### Parameter optimizations
