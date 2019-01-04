@@ -160,6 +160,15 @@ kmeans_colors=distinguishable_colors(10);
 figure;scatter(mappedX(:,1),mappedX(:,2),50,kmeans_colors(kmeans(SCORE(:,1:9),9),:),'.');
 ![untitled](https://user-images.githubusercontent.com/4110443/50712377-1fcf6d00-1026-11e9-9a21-8605962d2c0a.jpg)
 
+#### Check expression of a specific gene
+```
+figure
+scatter(mappedX(:,1),mappedX(:,2),50,PMBC_perc_filtered('ENSG00000105369_CD79A',get(PMBCDeepTree,'ColumnLabels')),'.')
+colormap(hot)
+```
+![untitled](https://user-images.githubusercontent.com/4110443/50713496-15af6d80-102a-11e9-939e-8e7b3ace6046.jpg)
+
+
 ## Discussions
 ### Parameter optimizations
 This tutorial tries to present an overview of what we can do with a subset of the scripts here. It uses arbitrary parameters, leaving space for users to play around with their own sets of parameters based on their own trade-offs. Please feel free to change parameters, including gene detection threshold, cell rarity threshold, clustering algorithms, whether to use z-score to do t-SNE, k-means clustering or hierarchical, remove irrelevant PCs first or cluster first, which principal components to use, t-SNE perplexity etc. Additional discussions are welcome. Maximal coding flexibility is in the hands of users.
