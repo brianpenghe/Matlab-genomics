@@ -97,15 +97,15 @@ A HeatMap matching the cell order of the deep-tree clustergram is then generated
 ```
 get(PMBCdm(strcontain('HOPX',get(PMBCdm,'RowNames')),:),'RowNames')
 ```
-*It will show*
+*It will show the full name*
 
 ![screen shot 2018-09-28 at 5 04 58 pm](https://user-images.githubusercontent.com/4110443/46238414-aa764100-c340-11e8-8554-5be376fa6801.png)
 
 ### t-SNE plot
 If you want to use the clusters defined by hierarchical clustering, let's first drop down our manually assigned cell clusters from clustering analysis by right clicking the branches and saving them as Cluster1, Cluster2...
 Based on the coloring in the example image, the clusters are:
-Cluster 1 - Orange
-Cluster 2 - Purple
+Cluster 1 - Purple
+Cluster 2 - Orange
 Cluster 3 - Blue
 Cluster 4 - Dark Green
 Cluster 5 - Dark Blue
@@ -124,7 +124,41 @@ ClusterID(GetOrder(get(Cluster5,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')
 ClusterID(GetOrder(get(Cluster6,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=6;
 ClusterID(GetOrder(get(Cluster7,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=7;
 ClusterID(GetOrder(get(Cluster8,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=8;
+ClusterID(GetOrder(get(Cluster9,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=9;
+ClusterID(GetOrder(get(Cluster10,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels')))=10;
 ```
+Now calculate t-SNE coordinates and plot
+```
+mappedX=tsne(double(PMBC_perc_filtered(get(PMBCDeepTree,'RowLabels'),get(PMBCDeepTree,'ColumnLabels')))','Algorithm','barneshut','NumPCAComponents',0,'Distance','spearman','Perplexity',30);
+*You should right click mappedX in Workspace window to save it to a file. So that next time you can use mappedX=importdata(); to import it*
+figure
+scatter(mappedX(:,1),mappedX(:,2),50,[0.8 0.8 0.8],'.')
+```
+![untitled](https://user-images.githubusercontent.com/4110443/50711305-a84c0e80-1022-11e9-89fd-10764b348e24.jpg)
+*The t-SNE map may vary from run to run due to different seeds used.*
+But you should see that most cells fall in large "islands" while a few outliers are far apart.
+
+Now paint the t-SNE plot with cluster colors.
+```
+hold on
+scatter(mappedX(ClusterID==1,1),mappedX(ClusterID==1,2),50,[0.49 0.18 0.56],'.')
+scatter(mappedX(ClusterID==2,1),mappedX(ClusterID==2,2),50,[0.85 0.33 0.1],'.')
+scatter(mappedX(ClusterID==3,1),mappedX(ClusterID==3,2),50,[0 0.45 0.74],'.')
+scatter(mappedX(ClusterID==4,1),mappedX(ClusterID==4,2),50,[0.47 0.67 0.19],'.')
+scatter(mappedX(ClusterID==5,1),mappedX(ClusterID==5,2),50,[0.3 0.75 0.93],'.')
+scatter(mappedX(ClusterID==6,1),mappedX(ClusterID==6,2),50,[1 0 1],'.')
+scatter(mappedX(ClusterID==7,1),mappedX(ClusterID==7,2),50,[0 1 1],'.')
+scatter(mappedX(ClusterID==8,1),mappedX(ClusterID==8,2),50,[1 0 0],'.')
+scatter(mappedX(ClusterID==9,1),mappedX(ClusterID==9,2),50,[0 1 0],'.')
+scatter(mappedX(ClusterID==10,1),mappedX(ClusterID==10,2),50,[1 1 0],'.')
+```
+![untitled](https://user-images.githubusercontent.com/4110443/50711823-3ffe2c80-1024-11e9-9ae5-dee2f0933818.jpg)
+
+#### Unsupervised k-means clustering
+Of course, you can do an unsupervised clustering using the top 10 PCs I mentioned above.
+kmeans_colors=distinguishable_colors(10);
+figure;scatter(mappedX(:,1),mappedX(:,2),50,kmeans_colors(kmeans(SCORE(:,1:9),9),:),'.');
+![untitled](https://user-images.githubusercontent.com/4110443/50712377-1fcf6d00-1026-11e9-9a21-8605962d2c0a.jpg)
 
 ## Discussions
 ### Parameter optimizations
