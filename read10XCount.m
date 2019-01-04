@@ -1,11 +1,24 @@
 function Matrix_dm=read10XCount(MtxFile,GeneFile,CellFile)
 %read10XCount is a function to import 10X single-cell RNA-seq UMI counts as MatrixMarket formats and converts it into a DataMatrix format on Matlab 
-%Matrix_dm = read10XCount(MtxFile,GeneFile,CellFile)
+%Matrix_dm = read10XCount('matrix.mtx','genes.tsv','barcodes.tsv')
 %the input arguments are paths or names of the input files
 if nargin < 1
     MtxFile='matrix.mtx';
     GeneFile='genes.tsv';
     CellFile='barcodes.tsv';
+end
+
+if isfile('matrix.mtx.gz')
+gunzip('matrix.mtx.gz')
+end
+if isfile('genes.tsv.gz')
+gunzip('genes.tsv.gz')
+end
+if isfile('barcodes.tsv.gz')
+gunzip('barcodes.tsv.gz')
+end
+if isfile('features.tsv.gz')
+gunzip('features.tsv.gz')
 end
 
 copyfile(MtxFile,strcat(MtxFile,'.txt'));
