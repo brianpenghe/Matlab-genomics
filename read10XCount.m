@@ -30,7 +30,9 @@ Cells_table=readtable(strcat(CellFile,'.txt'),'ReadVariableNames',false,'Delimit
 Genes_table=readtable(strcat(GeneFile,'.txt'),'ReadVariableNames',false,'Delimiter','\t');
 Genes_array=table2array(Genes_table);
 Genes_table2=array2table(strcat(Genes_array(:,1),'_',Genes_array(:,2))); 
-Matrix_table=[Genes_table2(1:height(array2table(Matrix_matrix)),:) array2table(Matrix_matrix)];
+tempMatrix_matrix=zeros(size(Genes_table2,1),size(Matrix_matrix,2));
+tempMatrix_matrix(1:size(Matrix_matrix,1),1:size(Matrix_matrix,2))=Matrix_matrix;
+Matrix_table=[Genes_table2 array2table(tempMatrix_matrix)];
 Matrix_table.Properties.VariableNames=[{'Var1'} ValidizeNames(table2array(Cells_table)')];
 Matrix_dm=Table2DataMatrix(Matrix_table);
 delete(strcat(MtxFile,'.txt'))
