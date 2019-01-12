@@ -1,4 +1,4 @@
-function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize)
+function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize,Inspect)
 %The input LogMatrix is a gene X sample DataMatrix that has been loged
 %             Sample1 Sample2 Sample3
 %      gene1
@@ -15,14 +15,20 @@ if nargin < 3
     CladeSize=2;
 end
 
+if nargin < 4
+    Inspect=1
+end
+
 Y=pdist(LogMatrix,'correlation');        
 Z=linkage(Y,'complete');
-%dendrogram(Z,50000,'ColorThreshold',CutOff)
+dendrogram(Z,50000,'ColorThreshold',CutOff)
 T=cluster(Z,'cutoff',CutOff,'criterion','distance');
 temp=tabulate(T);
 cdfplot(temp(:,2))
-Clg=clustergram(LogMatrix,'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false,'dendrogram',[CutOff 0]);
-set(Clg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
+if Inspect==1
+    Clg=clustergram(LogMatrix,'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false,'dendrogram',[CutOff 0]);
+    set(Clg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
+end
 DTClg=clustergram(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false);
 set(DTClg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
 end
