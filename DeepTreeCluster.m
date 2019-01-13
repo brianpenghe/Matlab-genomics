@@ -8,8 +8,10 @@ function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize,Inspect)
 %pre-filtering and log transformation have to be performed before using this function
 %CutOff has to be a number less than 1
 %CladeSize is an integer
+%Inspect is the mode you want to run
+%  Mode 1 is the fastest mode. Mode 0 is the most informative one.
 %function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize)
-
+%function [GeneOrder CellOrder] = DeepTreeCluster(LogMatrix,CutOff,CladeSize,1)
 if nargin < 3
     CutOff=0.8;
     CladeSize=2;
@@ -28,8 +30,19 @@ cdfplot(temp(:,2))
 if Inspect==1
     Clg=clustergram(LogMatrix,'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false,'dendrogram',[CutOff 0]);
     set(Clg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
+    DTClg=clustergram(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false);
+    set(DTClg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
+else
+    Y2Row=pdist(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'correlation');
+    Y2Col=pdist(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:)','spearman');
+    LogMatrixIndex=1:size(LogMatrix,1);
+    LogMatrixIndex2=LogMatrixIndex(ismember(T,temp(temp(:,2)>CladeSize,1)));
+    Z2Row=linkage(Y2Row,'complete');
+    Z2Col=linkage(Y2Col,'complete');
+    figure;
+    [DTClg.H2Row,DTClg.T2Row,outperm2Row]=dendrogram(Z2Row,50000);
+    DTClg.outperm2Row=LogMatrixIndex2(outperm2Row);
+    figure;
+    [DTClg.H2Col,DTClg.T2Col,DTClg.outperm2Col]=dendrogram(Z2Col,50000);
 end
-DTClg=clustergram(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false);
-set(DTClg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
 end
-
