@@ -9,7 +9,7 @@ function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize,Inspect)
 %CutOff has to be a number less than 1
 %CladeSize is an integer
 %Inspect is the mode you want to run
-%  Mode 0 is the fastest mode. Mode 2 is the most informative one.
+%  Mode -1 is the fastest mode. Mode 2 is the most informative one.
 %function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize)
 %function [GeneOrder CellOrder] = DeepTreeCluster(LogMatrix,CutOff,CladeSize,1)
 if nargin < 3
@@ -44,7 +44,9 @@ else
     figure;
                 [DTClg.H2Row,DTClg.T2Row,outperm2Row]=dendrogram(Z2Row,size(LogMatrixIndex2,2),'Orientation','left');
     DTClg.outperm2Row=LogMatrixIndex2(outperm2Row);
-    figure;
-    [DTClg.H2Col,DTClg.T2Col,DTClg.outperm2Col]=dendrogram(Z2Col,size(LogMatrix,2));
+    if Inspect<0
+        figure;
+        [DTClg.H2Col,DTClg.T2Col,DTClg.outperm2Col]=dendrogram(Z2Col,size(LogMatrix,2));
+    end
 end
 end
