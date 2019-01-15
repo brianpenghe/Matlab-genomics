@@ -45,6 +45,7 @@ else
                 [DTClg.H2Row,DTClg.T2Row,outperm2Row]=dendrogram(Z2Row,size(LogMatrixIndex2,2),'Orientation','left');
     DTClg.outperm2Row=LogMatrixIndex2(outperm2Row);
     if Inspect<0
+    else
         figure;
         [DTClg.H2Col,DTClg.T2Col,DTClg.outperm2Col]=dendrogram(Z2Col,size(LogMatrix,2));
     end
