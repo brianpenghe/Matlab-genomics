@@ -159,7 +159,7 @@ scatter(mappedX(ClusterID==10,1),mappedX(ClusterID==10,2),50,[1 1 0],'.')
 #### Unsupervised k-means clustering
 Of course, you can do an unsupervised clustering using the top 10 PCs I mentioned above.
 kmeans_colors=distinguishable_colors(10);
-figure;scatter(mappedX(:,1),mappedX(:,2),50,kmeans_colors(kmeans(SCORE(:,1:9),9),:),'.');
+figure;scatter(mappedX(:,1),mappedX(:,2),50,kmeans_colors(kmeans(double(PMBC_perc_filtered(get(PMBCDeepTree,'RowLabels'),get(PMBCDeepTree,'ColumnLabels')))',9),:),'.');
 ![untitled](https://user-images.githubusercontent.com/4110443/50712377-1fcf6d00-1026-11e9-9a21-8605962d2c0a.jpg)
 
 #### Check expression of a specific gene
