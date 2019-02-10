@@ -23,9 +23,7 @@ Extracting the file on Unix terminal (or double click on MatLab Finder)
 tar -xzf pbmc3k_filtered_gene_bc_matrices.tar.gz
 ```
 The data will be in a folder called "filtered_gene_bc_matrices/hg19". Go to that folder.
-```
-cd filtered_gene_bc_matrices/hg19/
-```
+
 *Below are commands for Matlab. Please make sure your current directory is correct (see picture below)*
 ![screen shot 2018-12-27 at 11 00 24 am](https://user-images.githubusercontent.com/4110443/50491358-bff21a00-09c6-11e9-8582-9b3dab309583.png)
 
@@ -132,7 +130,9 @@ ClusterID(GetOrder(get(Cluster10,'ColumnLabels'),get(PMBCDeepTree,'ColumnLabels'
 Now calculate t-SNE coordinates and plot
 ```
 mappedX=tsne(double(PMBC_perc_filtered(get(PMBCDeepTree,'RowLabels'),get(PMBCDeepTree,'ColumnLabels')))','Algorithm','barneshut','NumPCAComponents',0,'Distance','spearman','Perplexity',30);
+```
 *You should right click mappedX in Workspace window to save it to a file. So that next time you can use mappedX=importdata(); to import it*
+```
 figure
 scatter(mappedX(:,1),mappedX(:,2),50,[0.8 0.8 0.8],'.')
 ```
