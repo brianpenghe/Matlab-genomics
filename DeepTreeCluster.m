@@ -9,9 +9,10 @@ function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize,Inspect)
 %CutOff has to be a number less than 1
 %CladeSize is an integer
 %Inspect is the mode you want to run
-%  Mode -1 is the fastest mode. Mode 2 is the most informative one.
+%  Mode -1 is the fastest mode. Mode 2 is the most informative one. Mode -2 is for calculating number of DeepTree genes
 %function DTClg = DeepTreeCluster(LogMatrix,CutOff,CladeSize)
 %function [GeneOrder CellOrder] = DeepTreeCluster(LogMatrix,CutOff,CladeSize,1)
+%function [GeneOrder CellOrder] = DeepTreeCluster(LogMatrix,CutOff,CladeSize,-1,[2000:500:5000])
 if nargin < 3
     CutOff=0.8;
     CladeSize=2;
@@ -34,6 +35,8 @@ if Inspect>0
     end
     DTClg=clustergram(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false);
     set(DTClg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
+else if Inspect==-2
+    DTClg=sum(ismember(T,temp(temp(:,2)>CladeSize)));
 else
     Y2Row=pdist(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'correlation');
     Y2Col=pdist(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:)','spearman');
