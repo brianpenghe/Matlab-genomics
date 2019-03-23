@@ -1,7 +1,7 @@
-function [P Tail]= MetaHygecdf(I)
+function [P Tail]= TableHygecdf(I)
 %TableHygecdf makes use of the Intersect matrix to calculate hypergeometric enrichment cdf. The table is a contingency table. Rows and Columns are two different set of mutually exclusive catogaries. The category labels are VariableNames and RowNames of the table variable.
 %Useful for enrichment analysis
-%Icount are intersect counts 
+%I: intersect counts 
 %                 **B***D*i*m*e*n*s*i*o*n**
 %                
 %               * *************************
@@ -24,18 +24,18 @@ B = sum(table2array(I));
 M = sum(A); 
 for i=1:An
     for j=1:Bn
-        P(i, j)=hygecdf(Icount{i,j},M,A(i),B(j));
-        Tail(i, j)=hygecdf(Icount(i,j),M,A(i),B(j),'upper');
+        P(i, j)=hygecdf(I{i,j},M,A(i),B(j));
+        Tail(i, j)=hygecdf(I{i,j},M,A(i),B(j),'upper');
     end
 end
 
 figure
-colormap(jet)
+colormap(pink)
 imagesc(max(-log10(P*An*Bn),0));
 
 for i = 1:An
     for j = 1:Bn
-    textHandles(j,i) = text(j,i,num2str(I(i,j)),...
+        textHandles(j,i) = text(j,i,num2str(I{i,j}),...
                         'horizontalAlignment','center');
     end
 end
@@ -50,11 +50,11 @@ imagesc(max(-log10(Tail*An*Bn),0))
 
 for i = 1:An
     for j = 1:Bn
-    textHandles(j,i) = text(j,i,num2str(I(i,j)),...
+        textHandles(j,i) = text(j,i,num2str(I(i,j)),...
                         'horizontalAlignment','center');
     end
 end
-set(gca,'XTick',[1:Bn],'XTickLabel',strrep(B.Properties.VariableNames,'_','\_'),'XTickLabelRotation',90)
-set(gca,'YTick',[1:An],'YTickLabel',strrep(A.Properties.VariableNames,'_','\_'))
+set(gca,'XTick',[1:Bn],'XTickLabel',strrep(I.Properties.VariableNames,'_','\_'),'XTickLabelRotation',90)
+set(gca,'YTick',[1:An],'YTickLabel',strrep(I.Properties.VariableNames,'_','\_'))
 
 end
