@@ -33,8 +33,8 @@ end
 %%%%Plot the head figure for depletion
 figure
 colormap(pink)
-title('Depletion - P values')
 imagesc(max(-log10(P*An*Bn),0));
+title('Depletion - P values')
 colorbar
         
 for i = 1:An
@@ -49,8 +49,8 @@ set(gca,'YTick',[1:An],'YTickLabel',strrep(I.Properties.RowNames,'_','\_'))
 %%%%Plot the tail figure for enrichment
 figure
 colormap(pink)
-title('Enrichment - P values')
 imagesc(max(-log10(Tail*An*Bn),0))
+title('Enrichment - P values')
 colorbar
 % add count labels
 
