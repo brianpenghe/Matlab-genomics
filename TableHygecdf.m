@@ -22,6 +22,7 @@ function [P Tail]= TableHygecdf(I)
 A = sum(table2array(I)');
 B = sum(table2array(I));
 M = sum(A); 
+%%%%%Calculate head(including i) and tail(excluding i) probablity
 for i=1:An
     for j=1:Bn
         P(i, j)=hygecdf(I{i,j},M,A(i),B(j));
@@ -29,10 +30,13 @@ for i=1:An
     end
 end
 
+%%%%Plot the head figure for depletion
 figure
 colormap(pink)
+title('Depletion - P values')
 imagesc(max(-log10(P*An*Bn),0));
-
+colorbar
+        
 for i = 1:An
     for j = 1:Bn
         textHandles(j,i) = text(j,i,num2str(I{i,j}),...
@@ -42,19 +46,21 @@ end
 set(gca,'XTick',[1:Bn],'XTickLabel',strrep(I.Properties.VariableNames,'_','\_'),'XTickLabelRotation',90)
 set(gca,'YTick',[1:An],'YTickLabel',strrep(I.Properties.RowNames,'_','\_'))
 
-
+%%%%Plot the tail figure for enrichment
 figure
 colormap(pink)
+title('Enrichment - P values')
 imagesc(max(-log10(Tail*An*Bn),0))
+colorbar
 % add count labels
 
 for i = 1:An
     for j = 1:Bn
-        textHandles(j,i) = text(j,i,num2str(I(i,j)),...
+        textHandles(j,i) = text(j,i,num2str(I{i,j}),...
                         'horizontalAlignment','center');
     end
 end
 set(gca,'XTick',[1:Bn],'XTickLabel',strrep(I.Properties.VariableNames,'_','\_'),'XTickLabelRotation',90)
-set(gca,'YTick',[1:An],'YTickLabel',strrep(I.Properties.VariableNames,'_','\_'))
+set(gca,'YTick',[1:An],'YTickLabel',strrep(I.Properties.RowNames,'_','\_'))
 
 end
