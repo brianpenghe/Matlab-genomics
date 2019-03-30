@@ -34,8 +34,11 @@ end
 figure
 colormap(pink)
 imagesc(max(-log10(P*An*Bn),0));
-title('Depletion - P values')
-colorbar
+title('Depletion')
+hcb=colorbar
+colorTitleHandle = get(hcb,'Title');
+titleString = '-log_{10}P_{adj}';
+set(colorTitleHandle ,'String',titleString);
         
 for i = 1:An
     for j = 1:Bn
@@ -50,8 +53,12 @@ set(gca,'YTick',[1:An],'YTickLabel',strrep(I.Properties.RowNames,'_','\_'))
 figure
 colormap(pink)
 imagesc(max(-log10(Tail*An*Bn),0))
-title('Enrichment - P values')
-colorbar
+title('Enrichment')
+hcb=colorbar
+colorTitleHandle = get(hcb,'Title');
+titleString = '-log_{10}P_{adj}';
+set(colorTitleHandle ,'String',titleString);
+        
 % add count labels
 
 for i = 1:An
