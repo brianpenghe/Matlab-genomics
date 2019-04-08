@@ -33,7 +33,7 @@ if Inspect>0
         Clg=clustergram(LogMatrix,'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false,'dendrogram',[CutOff 0]);
         set(Clg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
     end
-    DTClg=clustergram(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',false);
+    DTClg=clustergram(LogMatrix(ismember(T,temp(temp(:,2)>CladeSize,1)),:),'Standardize',0,'RowPDist','correlation','ColumnPDist','spearman','DisplayRange',7.5,'Colormap',colormap(jet),'Symmetric',false,'linkage','complete', 'OptimalLeafOrder',true);
     set(DTClg,'Standardize',2,'DisplayRange',2.5,'Symmetric',true)
 else if Inspect==-2
     DTClg=sum(ismember(T,temp(temp(:,2)>CladeSize)));
