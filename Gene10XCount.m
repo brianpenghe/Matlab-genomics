@@ -31,6 +31,9 @@ else
         b(k).CData = k;
     end
 end
-colormap(flipud(colormap(jet)))
+cmap = colormap(flipud(colormap(jet))); %Create Colormap
+cbh = colorbar ; %Create Colorbar
+cbh.TickLabels = num2cell(fliplr(CutOffs(1:8))) ;    %Replace the labels of these 8 ticks 
+
 end
 
