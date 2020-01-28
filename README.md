@@ -1,11 +1,11 @@
 # Matlab-genomics
 Matlab-genomics is a collection of Matlab scripts to perform genomics analysis especially single-cell analysis.
 ## Introduction
-Single-cell analysis has been dominated by packages on open-source platforms such as R and python. However, Matlab has its own advantages and consistency. It has also been a first choice among many researchers originally in Physics and Neuroscience fields who are seeking to dive into the modern Bioinformatics realm.
+Single-cell analysis has been dominated by packages on open-source platforms such as R and python. However, Matlab has its own advantages and consistency. It saves users efforts trying to figure out package inter-compatibility and dependency. It has also been a first choice among many researchers originally in Physics and Neuroscience fields who are seeking to dive into the modern Bioinformatics realm.
 Therefore, I've assembled a set of handy scripts, some of which are borrowed from other repositories from GitHub and MathWork Fileexhange, if not created on my own, to accelerate Matlab fans' adaption to the Bioinformatics field.
 
 ## Installing
-Download the whole folder, and then point Matlab to this folder as one of customer scripts. This is the code for Mac Users:
+Download the whole folder, and then point MATLAB to this folder as one of customer scripts. This is the code for Mac Users:
 
 ```
 addpath(genpath('/Users/path_to_your_downloaded_and_extracted_codes')); 
@@ -173,10 +173,10 @@ colormap(hot)
 
 ## Discussions
 ### Parameter optimizations
-This tutorial tries to present an overview of what we can do with a subset of the scripts here. It uses arbitrary parameters, leaving space for users to play around with their own sets of parameters based on their own trade-offs. Please feel free to change parameters, including gene detection threshold, cell rarity threshold, clustering algorithms, whether to use z-score to do t-SNE, k-means clustering or hierarchical, remove irrelevant PCs first or cluster first, which principal components to use, t-SNE perplexity etc. Additional discussions are welcome. Maximal coding flexibility is in the hands of users.
+This tutorial tries to present an overview of what we can do with a subset of the scripts here. It uses arbitrary parameters, leaving space for users to play around with their own sets of parameters based on their own trade-offs. Please feel free to change parameters, including gene detection threshold, cell rarity threshold, clustering algorithms, whether to use z-score to do t-SNE, k-means clustering or hierarchical or Louvain, remove irrelevant PCs first or cluster first, which principal components to use, t-SNE perplexity etc. Additional discussions are welcome. Maximal coding flexibility is in the hands of users.
 
 ### Data filtering and batch effect control
-The author is strongly against the idea of a magic blackbox that beautifies the data. Existing methods usually "regress out" or "eliminate" so-called "batch-effects" instead of understanding what exactly they are. So in this tutorial the author does not intentionally remove certain groups of genes or those that dance with them because they may have biological meanings to users (stress, cell-cycle phases, duplication etc.).
+The author is strongly against the idea of a magic blackbox that beautifies the data. Existing methods usually either "regress out" or "eliminate" so-called "batch-effects" or "cell-cycleness" instead of understanding what exactly they are, or seek for corresponding counterparts between batches, assuming that they are approximately biological replicates, which is not necessarily true. So in this tutorial the author does not intentionally remove certain groups of genes or those that dance with them because they may have biological meanings to users (stress, cell-cycle phases, duplication etc.).
 
 ### Other scripts not mentioned here
 Due to the limit of time and space. Many other useful scripts are not mentioned in this tutorial. Users are welcome to explore them or raise issues about them.
