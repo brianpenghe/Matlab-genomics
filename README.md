@@ -1,5 +1,6 @@
 # Matlab-genomics
 Matlab-genomics is a collection of Matlab scripts to perform genomics analysis especially single-cell analysis.
+
 ## Introduction
 Single-cell analysis has been dominated by packages on open-source platforms such as R and python. However, Matlab has its own advantages and consistency. It saves users efforts trying to figure out package inter-compatibility and dependency. It has also been a first choice among many researchers originally in Physics and Neuroscience fields who are seeking to dive into the modern Bioinformatics realm.
 Therefore, I've assembled a set of handy scripts, some of which are borrowed from other repositories from GitHub and MathWork Fileexhange, if not created on my own, to accelerate Matlab fans' adaption to the Bioinformatics field.
@@ -170,6 +171,20 @@ colormap(hot)
 ```
 ![untitled](https://user-images.githubusercontent.com/4110443/50713496-15af6d80-102a-11e9-939e-8e7b3ace6046.jpg)
 
+## Compatibility with Scanpy on python
+To export data matrix from Scanpy object, use this
+```
+adata.to_df().to_csv('matrix.csv')
+```
+Then import this matrix to MATLAB
+```
+PBMC=readtable('matrix.csv');
+```
+Then convert to DataMatrix format
+```
+PBMCdm=Table2DataMatrix(PBMC);
+```
+Then you can perform the normal workflow on MATLAB. Skip the normalization step if the matrix is already normalized.
 
 ## Discussions
 ### Parameter optimizations
