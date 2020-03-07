@@ -1,6 +1,7 @@
 # Matlab-genomics
 Matlab-genomics is a collection of Matlab scripts to perform genomics analysis especially single-cell analysis.
 
+
 ## Introduction
 Single-cell analysis has been dominated by packages on open-source platforms such as R and python. However, Matlab has its own advantages and consistency. It saves users efforts trying to figure out package inter-compatibility and dependency. It has also been a first choice among many researchers originally in Physics and Neuroscience fields who are seeking to dive into the modern Bioinformatics realm.
 Therefore, I've assembled a set of handy scripts, some of which are borrowed from other repositories from GitHub and MathWork Fileexhange, if not created on my own, to accelerate Matlab fans' adaption to the Bioinformatics field.
@@ -65,7 +66,7 @@ Dispersion=var(PMBC_perc_filtered,0,2)./mean(PMBC_perc_filtered,2);
 *If you want to remove mitochondria genes, you could use [strnotcontain('_mt',XXXX)](https://github.com/brianpenghe/Matlab-genomics/blob/master/strnotcontain.m) to remove all the genes whose names start with "mt".
 
 ### Extracting cell type-specific genes for clustering analysis
-Mainstream methods like Seurat calculates "highly variable genes" based on dispersion (variance/mean of log-transformed abundance estimate), which is only able to enrich cell type-specific genes and deplete cell-cycle associated and house-keeping genes, but still include a large number of sporadic noises. One key difference between real cell markers and noise is that real markers usually have their followers due to tight regulation of the gene network. So they sit in "modules" of co-regulated genes that are highly correlated with each other. This type of strong co-linearity can be captured as "deepest branches" of a phylogenetic tree of genes. Below I'm showing you how this Deep-tree analysis identifies markers. By doing this, you don't need to perform a PCA for cell clustering.
+Mainstream methods like Seurat calculates "highly variable genes" based on dispersion (variance/mean of log-transformed abundance estimate), which is only able to enrich cell type-specific genes and deplete cell-cycle associated and house-keeping genes, but still include a large number of sporadic noises. One key difference between real cell markers and noise is that real markers usually have their followers due to tight regulation of the gene network. So they sit in "modules" of co-regulated genes that are highly correlated with each other. This type of strong co-linearity can be captured as "deepest branches" of a phylogenetic tree of genes. Below I'm showing you how this Deep-tree analysis (python version can be found [here](https://github.com/brianpenghe/python-genomics)) identifies markers. By doing this, you don't need to perform a PCA for cell clustering.
 
 Here I use the top 4000 high-dispersion genes as an initial input.
 ```
@@ -172,6 +173,7 @@ colormap(hot)
 ![untitled](https://user-images.githubusercontent.com/4110443/50713496-15af6d80-102a-11e9-939e-8e7b3ace6046.jpg)
 
 ## Compatibility with Scanpy on python
+
 To export data matrix from Scanpy object, use this
 ```
 adata.to_df().to_csv('matrix.csv')
