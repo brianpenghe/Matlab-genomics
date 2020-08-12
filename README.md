@@ -1,6 +1,10 @@
 # Matlab-genomics
 Matlab-genomics is a collection of Matlab scripts to perform genomics analysis especially single-cell analysis.
 
+## Citation
+These scripts were developed for [He et al. 2020 Nature](https://www.nature.com/articles/s41586-020-2536-x) 
+![image](https://user-images.githubusercontent.com/4110443/90067837-9b57cc80-dce7-11ea-9d31-8f5e49d07964.png)
+
 
 ## Introduction
 Single-cell analysis has been dominated by packages on open-source platforms such as R and python. However, Matlab has its own advantages and consistency. It saves users efforts trying to figure out package inter-compatibility and dependency. It has also been a first choice among many researchers originally in Physics and Neuroscience fields who are seeking to dive into the modern Bioinformatics realm.
