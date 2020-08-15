@@ -1,0 +1,5 @@
+Tstd3	Hsd17b7	Dnaic1	Sorbs1	Car6	4930430E12Rik	Cxcl2	Cxcl3	Ccl4	Gm29157	Gm17315	4732414G09Rik	Rapgef4os2	Gm12405	Gm12406	Ankdd1a	Catsperd	Il13ra2	Cdk15	Galr2	Agrp	Gm8495	Chst12	Has1	Gpr4	St8sia6	Gm11836	Pla2r1	2010009K17Rik	Gm16206	1700061G19Rik	9530034E10Rik	RP24-541A5.3	Ppp1r12b	Gm17029	Ppp1r12a	RP23-274G21.3	Gm13583	Gm21917	Acer2	Gm14317	Asz1	Gm15978	Apol10b	Npy4r	Gm11947	Gm20627	Gm12496	Rhox7a	Gsdmcl-ps	A630023A22Rik	Tmem61	Spint3	RP24-68C1.3	Zp3r	Spinkl	Npy6r	1700003G13Rik	Gm28856	Fcamr	Lcn8	Gm13398	Snx31	Mfsd4	Snd1
+
+Cluster 4 from hierarchical clustering analysis of bulk RNA samples. 
+1.	Genes in Cluster 4 show differing degrees of bladder-specific expression, which may result from a bladder-specific cell type that has a unique transcriptome signature.
+2.	GO analysis produced no terms. Mouse bladder has not been extensively studied, and under-annotation may compromise the statistical power of GO in this case. 
