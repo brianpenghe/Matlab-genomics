@@ -1,0 +1,7 @@
+Gm26520	Gm25939	Gm11878	Gm22884	Gm26315	Gm14633	Gm6155	Gm17104	Rpl30-ps9	Gm26447	Scarna10	Gm15471	Gm24289	Gm16283	Terc	Gm23639	Gm24029	Gm24336	Gm22748	RP23-243M12.5	Gm14154	Snora30	Gm20521	Gm14167	Gm20703	Gm15327	Gm26083	Snhg9	Gm9806	Gm5883	4930500M09Rik	Rps12-ps1	BC049715	Gm25663	Boll	Gm15747	A930041C12Rik	Prg4	Gm16184	Gm12764	Gm29585	RP23-328G14.2	RP23-328G14.1	Dock10	Pik3r5	Gm3940	Efcab9	Gm10355	5730435O14Rik	Rptoros	Gm15856	Dnah8	Adgb	Card9	Gm12193	Gm28707	Hamp2	Wfdc12	Serpina3h	Slc9a9	Egr2	S100a3	Gm17546	Cnot6l	Tnfrsf18
+
+Cluster 5 from hierarchical clustering analysis of bulk RNA samples. 
+1.	Genes in Cluster 5 are very prominently expressed in thymus and most have minimal expression in other tissues. 
+2.	Highly expressed genes also have positive signals in several non-thymus samples, with atypical irreproducibility between replicates.  A candidate explanation is batch-specific contamination of thymus-proximate tissues with thymus during dissection. While this kind of contamination doesn’t greatly alter global QC scores, it is readily detectable in this clustering analysis (see also CCA analysis).
+3.	GO analysis revealed enrichment in later stage maturing immune components, especially T-cell terms. Top terms include “immune system process” (p=1.8e-18) and “regulation of T-cell activation” (p=3.0e-13). 
+4.	Roughly one quarter of the genes are T-cell receptor components (alpha chain, gamma chain and delta chain). Interestingly, the two recombinases Rag1 and Rag2 are also in this cluster, indicating a TCR VDJ theme for this cluster. 
