@@ -79,53 +79,53 @@ A detailed description of each cluster and cell type can be found [here](https:/
 
 # Mouse forelimb cell types based on 10X scRNA-seq:
 
-0 - Mesenchymal cell 1
+[0 - Mesenchymal cell 1](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%200%20-%20Mesenchymal%20cell%201.txt)
 
-1 - Perichondrial cell
+[1 - Perichondrial cell](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%201%20-%20Perichondrial%20cell.txt)
 
-2 - Mesenchymal cell 2
+[2 - Mesenchymal cell 2](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%202%20-%20Mesenchymal%20cell%202.txt)
 
-3 - Chondrocyte
+[3 - Chondrocyte](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%203%20-%20Chondrocyte.txt)
 
-4 - Muscle 2 (PAX7+ muscle progenitor)
+[4 - Muscle 2 (PAX7+ muscle progenitor)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%204%20-%20Muscle%202%20(PAX7%2B%20muscle%20progenitor).txt)
 
-5 - Epithelial cell 1
+[5 - Epithelial cell 1](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%205%20-%20Epithelial%20cell%201.txt)
 
-6 - Fibroblast
+[6 - Fibroblast](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%206%20-%20Fibroblast.txt)
 
-7 - Muscle 1 (PAX3+ muscle progenitor)
+[7 - Muscle 1 (PAX3+ muscle progenitor)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%207%20-%20Muscle%201%20(PAX3%2B%20muscle%20progenitor).txt)
 
-8 - Macrophage
+[8 - Macrophage](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%208%20-%20Macrophage.txt)
 
-9 - Endothelial cell
+[9 - Endothelial cell](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%209%20-%20Endothelial%20cell.txt)
 
-10 - FOXP1+ perichondrial cell
+[10 - FOXP1+ perichondrial cell](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2010%20-%20FOXP1%2B%20perichondrial%20cell.txt)
 
-11 - Tenocyte
+[11 - Tenocyte](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2011%20-%20Tenocyte.txt)
 
-12 - Muscle 4 (muscle fibre)
+[12 - Muscle 4 (muscle fibre)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2012%20-%20Muscle%204%20(muscle%20fibre).txt)
 
-13 - Early erythrocyte (Primitive erythrocyte)
+[13 - Early erythrocyte (Primitive erythrocyte)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2013%20-%20Early%20erythrocyte%20(Primitive%20erythrocyte).txt)
 
-14 - Neural crest (and Schwann cell)
+[14 - Neural crest (and Schwann cell)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2014%20-%20Neural%20crest%20(and%20Schwann%20cell).txt)
 
-15 - Stressed mesenchymal cell (high mitochondria)
+[15 - Stressed mesenchymal cell (high mitochondria)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2015%20-%20Stressed%20mesenchymal%20cell%20(high%20mitochondria).txt)
 
-16 - Osteoblast (or interzone cartilage cell)
+[16 - Osteoblast (or interzone cartilage cell)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2016%20-%20Osteoblast%20(or%20interzone%20cartilage%20cell).txt)
 
-17 - Muscle 3 (MYOG+ myocyte)
+[17 - Muscle 3 (MYOG+ myocyte)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2017%20-%20Muscle%203%20(MYOG%2B%20myocyte).txt)
 
-18 - Epithelial 2
+[18 - Epithelial 2](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2018%20-%20Epithelial%202.txt)
 
-19 - Smooth muscle cell
+[19 - Smooth muscle cell](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2019%20-%20Smooth%20muscle%20cell.txt)
 
-20 - EMP (and mast cell)
+[20 - EMP (and mast cell)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2020%20-%20EMP%20(and%20mast%20cell).txt)
 
-21 - Megakaryocyte
+[21 - Megakaryocyte](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2021%20-%20Megakaryocyte.txt)
 
-22 - COL1A1+ muscle 4 (or interstitial muscle cell)
+[22 - COL1A1+ muscle 4 (or interstitial muscle cell)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2022%20-%20COL1A1%2B%20muscle%204%20(or%20interstitial%20muscle%20cell).txt)
 
-23 - Late erythrocyte (definitive erythrocyte)
+[23 - Late erythrocyte (definitive erythrocyte)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2023%20-%20Late%20erythrocyte%20(definitive%20erythrocyte).txt)
 
-24 - IHH+ chondrocyte (prehypertrophic chondrocyte)
+[24 - IHH+ chondrocyte (prehypertrophic chondrocyte)](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Limb%20Cell%20Type%2024%20-%20IHH%2B%20chondrocyte%20(prehypertrophic%20chondrocyte).txt)
 
