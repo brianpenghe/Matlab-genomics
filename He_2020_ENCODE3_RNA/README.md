@@ -75,7 +75,31 @@ A detailed description of each cluster and cell type can be found [here](https:/
 
 # Seven types of cross-contaminations in dissection:
 
+muscle contamination - [2 - Muscle](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%202.txt)
+
+thymus contamination - [5 - Thymus immune](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%205.txt)
+
+incomplete removal of adrenal gland from kidney - [6 - Hormone](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%206.txt)
+
+differences in gut tissues’ anatomical definition between labs - [18 - Eye and melanin](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2018.txt)
+
+skin contamination - [14 - Cornified envelope](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2014.txt)
+
+failure to remove the eyes from craniofacial prominence - [18 - Eye and melanin](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2018.txt)
+
+differences in neural tube dissection between labs - [19 - Hox9-13](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2019.txt) and [25 - Hox1-9](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2025.txt)
+
+
 # Four lists of batch effect-specific genes:
+
+[15 - Technical A](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2015.txt) 
+
+[17 - Technical B](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2017.txt)
+
+[22 - Technical C](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2022.txt)
+
+[23 - Technical D](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2023.txt)
+
 
 # Mouse forelimb cell types based on 10X scRNA-seq:
 
