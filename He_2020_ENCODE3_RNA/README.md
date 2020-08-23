@@ -1,4 +1,4 @@
-# This is a summary of what you can find here as a back-up resource list for [He et al. 2020 Nature](https://www.nature.com/articles/s41586-020-2536-x) 
+# This is a summary of what you can find here as a back-up resource list for [He and Williams et al. 2020 Nature](https://www.nature.com/articles/s41586-020-2536-x) 
 A detailed description of each cluster and cell type can be found [here](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-020-2536-x/MediaObjects/41586_2020_2536_MOESM1_ESM.docx)
 
 # Mouse tissue development bulk RNA-seq co-expression clusters
