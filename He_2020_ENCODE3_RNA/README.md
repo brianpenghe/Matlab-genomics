@@ -81,7 +81,7 @@ thymus contamination - [5 - Thymus immune](https://github.com/brianpenghe/Matlab
 
 incomplete removal of adrenal gland from kidney - [6 - Hormone](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%206.txt)
 
-differences in gut tissues’ anatomical definition between labs - [18 - Eye and melanin](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2018.txt)
+differences in gut tissues’ anatomical definition between labs - [11 - Brush border](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2011.txt)
 
 skin contamination - [14 - Cornified envelope](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Bulk%20Cluster%2014.txt)
 
