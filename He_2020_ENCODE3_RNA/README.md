@@ -1,4 +1,7 @@
 # This is a summary of what you can find here as a back-up resource list for [He and Williams et al. 2020 Nature](https://www.nature.com/articles/s41586-020-2536-x) 
+
+The MATLAB code used to perform clustering analyses and PCA can be found [here](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Notebook_1_BulkRNA.md)
+
 A detailed description of each cluster and cell type can be found [here](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-020-2536-x/MediaObjects/41586_2020_2536_MOESM1_ESM.docx)
 
 # Mouse tissue development bulk RNA-seq co-expression clusters
