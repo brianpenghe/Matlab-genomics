@@ -3,6 +3,9 @@ Matlab-genomics is a collection of Matlab scripts to perform genomics analysis e
 
 ## Citation
 These scripts were developed for [He and Williams et al. 2020 Nature](https://www.nature.com/articles/s41586-020-2536-x) 
+
+The codes and resources related to gthe paper are [here](https://github.com/brianpenghe/Matlab-genomics/tree/master/He_2020_ENCODE3_RNA).
+
 ![image](https://user-images.githubusercontent.com/4110443/90067837-9b57cc80-dce7-11ea-9d31-8f5e49d07964.png)
 
 
