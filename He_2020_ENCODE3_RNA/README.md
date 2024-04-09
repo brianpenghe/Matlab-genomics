@@ -6,6 +6,8 @@ The Linux shell script and MATLAB code to plot correlations between GROseq, RNAs
 
 A detailed description of each cluster and cell type can be found [here](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-020-2536-x/MediaObjects/41586_2020_2536_MOESM1_ESM.docx)
 
+Scripts to generate the network graphs are [here](https://github.com/hamrhein/mouse_embryo)
+
 # Mouse tissue development bulk RNA-seq co-expression clusters
 
 [1 - Keratin](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/GeneLists/Bulk%20Cluster%201.txt)
