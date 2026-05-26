@@ -1,3 +1,7 @@
+# ⚠️⚠️Repo MOVED to [HERE](https://github.com/Peng-He-Lab/He-ENCODE-RNA-2020) ⚠️⚠️!
+# ⚠️⚠️Updated Folder [HERE](https://github.com/Peng-He-Lab/He-ENCODE-RNA-2020)⚠️⚠️!
+# ⚠️⚠️Newer version [HERE](https://github.com/Peng-He-Lab/He-ENCODE-RNA-2020) ⚠️⚠️!
+
 # This is a summary of what you can find here as a back-up resource list for [He and Williams et al. 2020 Nature](https://www.nature.com/articles/s41586-020-2536-x) 
 
 The MATLAB code used to perform clustering analyses and PCA can be found [here](https://github.com/brianpenghe/Matlab-genomics/blob/master/He_2020_ENCODE3_RNA/Notebook_1_BulkRNA.md).
